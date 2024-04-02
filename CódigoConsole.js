@@ -58,8 +58,12 @@ if (selectElement) {
   console.log("Elemento não encontrado.");
 }
 
+//Último passo - enviar 
+var element = document.evaluate('//*[@id="ticketForm"]/div[2]/input', document, null, 
+                                XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+// Verifica se o elemento foi encontrado
 if (element) {
-  // Simular o clique no elemento
+  // Clica nele
   element.click();
 } else {
   console.log("Elemento não encontrado com o XPath fornecido.");
