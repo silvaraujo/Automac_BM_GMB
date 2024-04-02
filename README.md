@@ -1,4 +1,7 @@
 # Automação_BM_GMB
+>Esse código tem viés de usado diretamente no console de qualquer navegador. Através da interação do Javascript "puro" com o Código-Fonte do aplicativo web.
+
+O objetivo desse projeto é automatizar a criação e o preenchimento de tickets repetitivos específicos de um dado relatório. As interações dentro desse relatório se repetem exaustivamente e não se faz necessária a análise criteriosa de um humano.
 
 ## 1.0 - AUTOMAÇÃO NA CRIAÇÃO DO TICKET 
    >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente
