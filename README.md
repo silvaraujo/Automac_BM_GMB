@@ -74,13 +74,13 @@ if (selectElement) {
 
 Por último, enviamos os dados preenchidos.
 ```JavaScript
-// Encontrar o elemento pelo XPath
+// Encontra o botão pelo XPath
 var element = document.evaluate('//*[@id="ticketForm"]/div[2]/input', document, null, 
                                 XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
-// Verificar se o elemento foi encontrado
+// Verifica se o elemento foi encontrado
 if (element) {
-  // Simular o clique no elemento
+  // Clica nele
   element.click();
 } else {
   console.log("Elemento não encontrado com o XPath fornecido.");
