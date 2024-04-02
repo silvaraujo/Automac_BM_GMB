@@ -86,3 +86,6 @@ if (element) {
   console.log("Elemento não encontrado com o XPath fornecido.");
 }
 ```
+## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET 
+   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente
+### 2.1 - Conexão com o código
