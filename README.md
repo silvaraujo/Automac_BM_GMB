@@ -90,7 +90,7 @@ if (element) {
   console.log("Elemento não encontrado com o XPath fornecido.");
 }
 ```
-## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET 
+## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET(Em andamento)
    >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente
 
-### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET
+### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET(Em andamento)
