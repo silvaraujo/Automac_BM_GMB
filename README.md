@@ -3,6 +3,7 @@
 
 O objetivo desse projeto é automatizar a criação e o preenchimento de tickets repetitivos específicos de um dado relatório. As interações dentro desse relatório se repetem exaustivamente e não se faz necessária a análise criteriosa de um humano.
 
+Link do relatório: https://app.buzzmonitor.com.br/reports/65a57e838607cd490c6d76cc
 ## 1.0 - AUTOMAÇÃO NA CRIAÇÃO DO TICKET 
    >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente
 
