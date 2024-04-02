@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Clica nele
             element1.click();
             // Encontra o segundo elemento usando o seletor de CSS
+            //Foi adicionado quando pedi para o gpt organizar o código. Achei redundante e não consegui entender porque foi adicionado. Mas não parece afetar nada.
             const submitButton = document.querySelector('#ticketForm input[type="submit"]');
             if (submitButton) {
                 // Clica no botão de envio
