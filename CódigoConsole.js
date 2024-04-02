@@ -43,9 +43,26 @@ function preencherResponsavel(nomeResponsavel) {
 preencherResponsavel("Caio Araújo");
 
 // Envia o formulário
-const submitButton = document.querySelector('#ticketForm input[type="submit"]');
-if (submitButton) {
-    submitButton.click();
+// Encontra o primeiro elemento usando XPath
+var element1 = document.evaluate('//*[@id="ticketForm"]/div[2]/input', document, null,
+  XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+// Verifica se o elemento foi encontrado
+if (element1) {
+  // Clica nele
+  element1.click();
+  // Espera 3 segundos antes de continuar
+  setTimeout(() => {
+    // Encontra o segundo elemento usando o seletor de CSS
+    const submitButton = document.querySelector('#ticketForm input[type="submit"]');
+    if (submitButton) {
+      // Clica no botão de envio
+      submitButton.click();
+    } else {
+      console.log("Botão de envio não encontrado.");
+    }
+  }, 3000); // Espera 3 segundos (3000 milissegundos) antes de clicar no botão de envio
 } else {
-    console.log("Botão de envio não encontrado.");
+  console.log("Elemento não encontrado com o XPath fornecido.");
 }
+
