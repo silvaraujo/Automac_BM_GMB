@@ -63,6 +63,7 @@ setTimeout(() => {
                                 // Clica nele
                                 element1.click();
                                    // Encontra o segundo elemento usando o seletor de CSS
+                                   // Surgiu quando pedi para o gpt organizar o código. Parece redundante.
                                     const submitButton = document.querySelector('#ticketForm input[type="submit"]');
                                     if (submitButton) {
                                         // Clica no botão de envio
