@@ -1,14 +1,18 @@
-// Seleciona todos os elementos <a> dentro de elementos <li> com a classe específica
-var elementosA = document.querySelectorAll('li.tooltipster.ng-scope.tooltipstered a');
+// Localize o ticket aberto usando o seletor CSS
+var ticketopen = document.querySelector('a.open-ticket.ng-scope');
 
-// Agora, você pode iterar sobre esses elementos ou acessá-los diretamente como um array
-// Por exemplo, para acessar o texto dentro do primeiro elemento <a>:
-var primeiroTextoA = elementosA[0].textContent;
+// Verifica se o elemento foi encontrado
+if (ticketopen) {
+    // Simula um clique no elemento
+    ticketopen.click();
+} else {
+    console.log("Ticket não encontrado.");
+}
 
-// E para acessar o texto dentro do segundo elemento <a>:
-var segundoTextoA = elementosA[1].textContent;
+// Seleciona 
+var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
 
-// E assim por diante...
+// armazena a nota
+var Notaticket = Primeiranota.textContent;
 
-console.log(primeiroTextoA);
-console.log(segundoTextoA);
+console.log(Notaticket);
