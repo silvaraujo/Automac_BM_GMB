@@ -94,3 +94,4 @@ if (element) {
    >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, antes de começar o código.
 
 ### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET(Em andamento)
+
