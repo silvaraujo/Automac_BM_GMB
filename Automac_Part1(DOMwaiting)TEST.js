@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         console.log("ponto");
     }
-
     // Clica em "Abrir Ticket"
     const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
     if (newTicketButton) {
