@@ -109,21 +109,13 @@ if (ticketopen) {
 }
 ```
 ### 2.2 - Coleta da "Nota" do ticket.
- >Necessita montar o caso onde existem 2 notas
-
+ <melhor inserir essa parte no começo
 ```JavaScript
-// Seleciona todos os elementos <a> dentro de elementos <li> com a classe específica
-var elementosA = document.querySelectorAll('li.tooltipster.ng-scope.tooltipstered a');
+// Seleciona 
+var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
 
-// Agora, você pode iterar sobre esses elementos ou acessá-los diretamente como um array
-// Por exemplo, para acessar o texto dentro do primeiro elemento <a>:
-var primeiroTextoA = elementosA[0].textContent;
+// armazena a nota
+var Notaticket = Primeiranota.textContent;
 
-// E para acessar o texto dentro do segundo elemento <a>:
-var segundoTextoA = elementosA[1].textContent;
-
-// E assim por diante...
-
-console.log(primeiroTextoA);
-console.log(segundoTextoA);
+console.log(Notaticket);
 ```
