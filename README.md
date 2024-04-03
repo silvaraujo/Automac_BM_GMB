@@ -97,14 +97,8 @@ if (element) {
 Após o envio do Json, usamos esse comando para abrir o ticket
 
 ```JavaScript
-// Localize o ticket aberto usando XPath
-var ticketopen = document.evaluate(
-    '//*[@id="gmb-616038478607cd31975c4006_8494051565821982476_gmb_crm-AbFvOqk7bTKvjYmxRHFS1Qva5dkYkN8udUk7a9TU3xjYlCdxcrJwEgplGlN0ey53oYlwLlJoMyLRaA"]/div[6]/a[7]',
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null
-).singleNodeValue;
+// Localize o ticket aberto usando o seletor CSS
+var ticketopen = document.querySelector('a.open-ticket.ng-scope');
 
 // Verifica se o elemento foi encontrado
 if (ticketopen) {
@@ -113,7 +107,6 @@ if (ticketopen) {
 } else {
     console.log("Ticket não encontrado.");
 }
-
 ```
 ### 2.2 - Coleta da "Nota" do ticket.
  >Necessita montar o caso onde existem 2 notas
