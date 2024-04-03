@@ -93,5 +93,44 @@ if (element) {
 ## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET(Em andamento)
    >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, antes de começar o código.
 
-### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET(Em andamento)
+### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET
+Após o envio do Json, usamos esse comando para abrir o ticket
 
+```JavaScript
+// Localize o ticket aberto usando XPath
+var ticketopen = document.evaluate(
+    '//*[@id="gmb-616038478607cd31975c4006_8494051565821982476_gmb_crm-AbFvOqk7bTKvjYmxRHFS1Qva5dkYkN8udUk7a9TU3xjYlCdxcrJwEgplGlN0ey53oYlwLlJoMyLRaA"]/div[6]/a[7]',
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+).singleNodeValue;
+
+// Verifica se o elemento foi encontrado
+if (ticketopen) {
+    // Simula um clique no elemento
+    ticketopen.click();
+} else {
+    console.log("Ticket não encontrado.");
+}
+
+```
+### 2.2 - Coleta da "Nota" do ticket.
+ >Necessita montar o caso onde existem 2 notas
+
+```JavaScript
+// Seleciona todos os elementos <a> dentro de elementos <li> com a classe específica
+var elementosA = document.querySelectorAll('li.tooltipster.ng-scope.tooltipstered a');
+
+// Agora, você pode iterar sobre esses elementos ou acessá-los diretamente como um array
+// Por exemplo, para acessar o texto dentro do primeiro elemento <a>:
+var primeiroTextoA = elementosA[0].textContent;
+
+// E para acessar o texto dentro do segundo elemento <a>:
+var segundoTextoA = elementosA[1].textContent;
+
+// E assim por diante...
+
+console.log(primeiroTextoA);
+console.log(segundoTextoA);
+```
