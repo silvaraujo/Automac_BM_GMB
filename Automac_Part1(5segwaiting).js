@@ -4,9 +4,9 @@ setTimeout(() => {
     const brandValue = brandSpan ? brandSpan.textContent : '';
     //mostra no console qual é a marca
     if (brandValue === 'C') {
-        console.log("casas bahia");
+        console.log("esse ticket é casas bahia");
     } else {
-        console.log("ponto");
+        console.log("esse ticket é ponto");
     }
     // Clica em "Abrir Ticket"
     setTimeout(() => {
@@ -15,7 +15,7 @@ setTimeout(() => {
             newTicketButton.click();
             console.log("Ticket aberto")
         } else {
-            console.log("Botão para abrir novo ticket não encontrado.");
+            console.log("Botão para abrir novo ticket não encontrado com o seletor.");
         }
         // Função para preencher a marca
         setTimeout(() => {
@@ -25,17 +25,17 @@ setTimeout(() => {
                     selectElement.value = marca;
                     selectElement.dispatchEvent(new Event('change'));
                 } else {
-                    console.log("Elemento da marca não encontrado.");
+                    console.log("Elemento da marca não encontrado com o ID.");
                 }
             }
             // Preenche a marca com base no valor da variável valorSpan
             setTimeout(() => {
                 if (brandValue === 'C') {
                     preencherMarca("616038478607cd31975c4006_casas_bahia");
-                    console.log("Marca preenchida CB");
+                    console.log("Marca preenchida com sucesso CB");
                 } else {
                     preencherMarca("616038478607cd31975c4006_ponto");
-                    console.log("Marca preenchida Pin");
+                    console.log("Marca preenchida com sucesso PIN");
                 }
                 // Função para preencher o responsável
                 setTimeout(() => {
@@ -45,13 +45,13 @@ setTimeout(() => {
                             selectElement.value = nomeResponsavel;
                             selectElement.dispatchEvent(new Event('change'));
                         } else {
-                            console.log("Elemento do responsável não encontrado.");
+                            console.log("Elemento do responsável não encontrado com o selector.");
                         }
                     }
                     // Preenche o responsável como "Caio Araújo"
                     setTimeout(() => {
                         preencherResponsavel("Caio Araújo");
-                        console.log("Responsável - Caio");
+                        console.log("Responsável preenchido - Caio");
 
                         // Envia o formulário
                         setTimeout(() => {
@@ -62,15 +62,7 @@ setTimeout(() => {
                             if (element1) {
                                 // Clica nele
                                 element1.click();
-                                   // Encontra o segundo elemento usando o seletor de CSS
-                                   // Surgiu quando pedi para o gpt organizar o código. Parece redundante.
-                                    const submitButton = document.querySelector('#ticketForm input[type="submit"]');
-                                    if (submitButton) {
-                                        // Clica no botão de envio
-                                        submitButton.click();
-                                    } else {
-                                        console.log("Botão de envio não encontrado.");
-                                    }
+                                console.log("Json enviado!")
                             } else {
                                 console.log("Elemento não encontrado com o XPath fornecido.");
                             }
