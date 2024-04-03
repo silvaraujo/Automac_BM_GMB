@@ -1,11 +1,11 @@
 # Automação_BM_GMB
->Esse código tem viés de ser usado diretamente no console de qualquer navegador. Através da interação do Javascript "puro" com o Código-Fonte do aplicativo web.
+>Esse código foi projetado para ser usado diretamente no console de qualquer navegador. Através da interação do Javascript "puro" com o Código-Fonte do aplicativo web.
 
-O objetivo desse projeto é automatizar a criação e o preenchimento de tickets repetitivos específicos de um dado relatório. As interações dentro desse relatório se repetem exaustivamente e não se faz necessária a análise criteriosa de um humano.
+O viés do projeto é automatizar a criação e o preenchimento de tickets repetitivos específicos de um dado relatório. Observando que as interações dentro desse relatório se repetem exaustivamente e não se faz necessária a análise criteriosa de um humano.
 
 Link do relatório: https://app.buzzmonitor.com.br/reports/65a57e838607cd490c6d76cc
 ## 1.0 - AUTOMAÇÃO NA CRIAÇÃO DO TICKET 
-   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente
+   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, no final do código.
 
 ### 1.1 - PRIMEIRA TELA
 
@@ -91,6 +91,6 @@ if (element) {
 }
 ```
 ## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET(Em andamento)
-   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente
+   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, antes de começar o código.
 
 ### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET(Em andamento)
