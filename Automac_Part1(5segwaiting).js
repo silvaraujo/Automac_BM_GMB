@@ -2,12 +2,22 @@
 setTimeout(() => {
     const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
     const brandValue = brandSpan ? brandSpan.textContent : '';
-    //mostra no console qual é a marca
-    if (brandValue === 'C') {
-        console.log("esse ticket é casas bahia");
+    if (brandValue) {
+        //mostra no console qual é a marca
+        if (brandValue === 'C') {
+        console.log("esse ticket é das casas bahia");
+        } else {
+        console.log("esse ticket é do ponto");
+        }
     } else {
-        console.log("esse ticket é ponto");
+       Console.log("Brand não encontrada");
     }
+    // Seleciona o icone azul de nota no BMG
+    var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+    // armazena a nota
+    var Notaticket = Primeiranota.textContent;
+    console.log("A nota da avaliação é:",Notaticket);
+    
     // Clica em "Abrir Ticket"
     setTimeout(() => {
         const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
@@ -72,4 +82,4 @@ setTimeout(() => {
             }, 5000); // Espera 5 segundos antes de clicar em "Abrir Ticket"
         }, 5000); // Espera 5 segundos antes de armazenar a marca
     }, 5000); // Espera 5 segundos antes de clicar em "Abrir Ticket"
-}, 5000); // Espera 5 segundos antes de armazenar a marca
+}, 5000); // Espera 5 segundos antes de armazenar a marca e a nota
