@@ -9,7 +9,7 @@ setTimeout(() => {
     } else {
         console.log("Ticket não encontrado.");
     }
-}, 1000); // Intervalo de 1 segundo antes de abrir o ticket
+}, 4000); // Intervalo de 1 segundo antes de abrir o ticket
 
 // Selecionando o botão pelo seletor CSS
 setTimeout(() => {
@@ -22,18 +22,7 @@ setTimeout(() => {
     } else {
         console.error("Botão não encontrado.");
     }
-}, 2000); // Intervalo de 2 segundos antes de clicar no botão
-
-// Removendo os caracteres do valor do input
-setTimeout(() => {
-    var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
-    var valorAtual = input.value;
-    input.value = valorAtual.slice(0, -6); // Remove o último caractere
-
-    // Disparando um evento de input para notificar o input sobre a alteração
-    var event = new Event('input', { bubbles: true });
-    input.dispatchEvent(event);
-}, 3000); // Intervalo de 3 segundos antes de remover os caracteres do input
+}, 8000); // Intervalo de 2 segundos antes de clicar no botão
 
 // Seleciona todos os elementos com a classe 'item-list-container'
 setTimeout(() => {
@@ -56,7 +45,7 @@ setTimeout(() => {
         ultimoElemento.click();
         console.log('00. Avaliação Sem Comentário - preenchido');
     }
-}, 4000); // Intervalo de 4 segundos antes de clicar no último elemento
+}, 12000); // Intervalo de 4 segundos antes de clicar no último elemento
 
     // Seleciona a nota de avaliação do ticket
     var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
@@ -67,6 +56,8 @@ setTimeout(() => {
     } else {
         console.log("Nota não encontrada"); // Nota de avaliação não encontrada
     }
+
+setTimeout(() => {
 // Localizando todas as labels com data-ng-class="tag.selection" e classe "ng-binding blank"
 var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
 
@@ -84,3 +75,4 @@ labels.forEach(function(label) {
         label.click();
     }
 });
+}, 15000); // Intervalo de 4 segundos antes de clicar no último elemento
