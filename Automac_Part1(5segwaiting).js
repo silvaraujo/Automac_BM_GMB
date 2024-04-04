@@ -14,11 +14,14 @@ setTimeout(() => {
     }
     // Seleciona o icone azul de nota no BMG
     var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
-    // armazena a nota
+    if (Primeiranota) {
+         // armazena a nota
     var Notaticket = Primeiranota.textContent;
     console.log("A nota da avaliação é:",Notaticket);
     var NotaDoTicket = "Nota " + Notaticket;
-    
+    } else {
+        console.log("Nota não encontrada")
+    }
     // Clica em "Abrir Ticket"
     setTimeout(() => {
         const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
@@ -43,10 +46,10 @@ setTimeout(() => {
             setTimeout(() => {
                 if (brandValue === 'C') {
                     preencherMarca("616038478607cd31975c4006_casas_bahia");
-                    console.log("Marca preenchida com sucesso CB");
+                    console.log("Marca preenchida CB");
                 } else {
                     preencherMarca("616038478607cd31975c4006_ponto");
-                    console.log("Marca preenchida com sucesso PIN");
+                    console.log("Marca preenchida PIN");
                 }
                 // Função para preencher o responsável
                 setTimeout(() => {
