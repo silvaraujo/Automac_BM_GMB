@@ -15,16 +15,6 @@ setTimeout(() => {
         console.log("Marca não encontrada"); // Iniciais da marca não encontradas
     }
 
-    // Seleciona a nota de avaliação do ticket (se existir)
-    var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
-    if (Primeiranota) {
-        var Notaticket = Primeiranota.textContent; // Obtém a nota do ticket
-        console.log("A nota da avaliação é:", Notaticket); // Exibe a nota do ticket
-        var NotaDoTicket = "Nota " + Notaticket; // Concatena a nota com a string "Nota"
-    } else {
-        console.log("Nota não encontrada"); // Nota de avaliação não encontrada
-    }
-
     // Clica no botão "Abrir Ticket" (se existir)
     setTimeout(() => {
         const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
