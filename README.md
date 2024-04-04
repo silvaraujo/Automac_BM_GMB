@@ -5,13 +5,23 @@ O viés do projeto é automatizar a criação e o preenchimento de tickets repet
 
 Link do relatório: https://app.buzzmonitor.com.br/reports/65a57e838607cd490c6d76cc
 ## 1.0 - AUTOMAÇÃO NA CRIAÇÃO DO TICKET 
-   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, no final do código.
+>lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, no final do código.
 
 ### 1.1 - PRIMEIRA TELA
 
 Coleta o primeiro span que sinaliza "C" ou "P".
 ```JavaScript
 	var valorSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]').textContent;
+```
+Coleta a nota
+```JavaScript
+// Seleciona o icone azul de nota no BMG
+var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+
+// armazena a nota
+var Notaticket = Primeiranota.textContent;
+
+console.log(Notaticket);
 ```
 Clique para abrir o ticket.
 ```JavaScript
@@ -40,7 +50,7 @@ Essa parte preenche a marca.
 	}
 
                      }
-else //selecione Ponto
+       else //selecione Ponto
         { 
         var selectElement = document.getElementById("ticket-brand");
 
@@ -91,7 +101,7 @@ if (element) {
 }
 ```
 ## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET(Em andamento)
-   >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, antes de começar o código.
+>lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, antes de começar o código.
 
 ### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET
 Após o envio do Json, usamos esse comando para abrir o ticket
@@ -109,13 +119,4 @@ if (ticketopen) {
 }
 ```
 ### 2.2 - Coleta da "Nota" do ticket.
- <melhor inserir essa parte no começo
-```JavaScript
-// Seleciona 
-var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
 
-// armazena a nota
-var Notaticket = Primeiranota.textContent;
-
-console.log(Notaticket);
-```
