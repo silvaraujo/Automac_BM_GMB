@@ -118,5 +118,30 @@ if (ticketopen) {
     console.log("Ticket não encontrado.");
 }
 ```
-### 2.2 - Coleta da "Nota" do ticket.
+### 2.2 - Preenchimento dos dados do ticket.
+### 2.2.1 - 00 avaliação sem comentário.
 
+```JavaScript
+// Selecionando o elemento correspondente ao item "00. Avaliação Sem Comentário"
+var avaliacaoSemComentarioItem = document.querySelector(".item-list.tooltipster.ng-scope.blank:nth-of-type(1)");
+
+// Simulando o clique no elemento
+if (avaliacaoSemComentarioItem) {
+    avaliacaoSemComentarioItem.click();
+} else {
+    console.log("O elemento '00. Avaliação Sem Comentário' não foi encontrado.");
+}
+```
+### 2.2.2 - Condicional das notas Notas.
+
+```JavaScript
+// Selecionando o elemento correspondente ao item "00. Avaliação Sem Comentário"
+var avaliacaoSemComentarioItem = document.querySelector(".item-list.tooltipster.ng-scope.blank:nth-of-type(1)");
+
+// Simulando o clique no elemento
+if (avaliacaoSemComentarioItem) {
+    avaliacaoSemComentarioItem.click();
+} else {
+    console.log("O elemento '00. Avaliação Sem Comentário' não foi encontrado.");
+}
+```
