@@ -9,10 +9,3 @@ if (ticketopen) {
     console.log("Ticket não encontrado.");
 }
 
-// Seleciona 
-var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
-
-// armazena a nota
-var Notaticket = Primeiranota.textContent;
-
-console.log(Notaticket);
