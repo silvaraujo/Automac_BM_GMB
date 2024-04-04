@@ -20,8 +20,8 @@ var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scop
 
 // armazena a nota
 var Notaticket = Primeiranota.textContent;
-
-console.log(Notaticket);
+var NotaDoTicket = "Nota " + Notaticket;
+console.log(NotaDoTicket);
 ```
 Clique para abrir o ticket.
 ```JavaScript
@@ -195,9 +195,14 @@ var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-
 
 // Iterando sobre todas as labels encontradas
 labels.forEach(function(label) {
-    // Verificando se o conteúdo da label é "Nota 5"
-    if (label.textContent.trim() === "Nota 5") {
-        console.log("Adicionando nota 5", label.textContent.trim());
+    // Obtendo o conteúdo da label
+    var content = label.textContent.trim();
+    // Verificando se o conteúdo da label é igual à variável notaticket
+    if (content === NotaDoTicket) {
+        // Preenchendo o input com o valor da variável notaticket
+        var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+        input.value = NotaDoTicket;
+        console.log("Preenchendo com", NotaDoTicket);
         // Simulando um clique na label
         label.click();
     }
