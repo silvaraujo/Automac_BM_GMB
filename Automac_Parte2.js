@@ -24,8 +24,15 @@ setTimeout(() => {
     }
 }, 8000); // Intervalo de 2 segundos antes de clicar no botão
 
-// Seleciona todos os elementos com a classe 'item-list-container'
 setTimeout(() => {
+    var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+    var valorAtual = input.value;
+    input.value = valorAtual.slice(0, -6); // Remove o último caractere
+
+    // Disparando um evento de input para notificar o input sobre a alteração
+    var event = new Event('input', { bubbles: true });
+    input.dispatchEvent(event);
+
     const itens = document.querySelectorAll(".item-list-container");
 
     let ultimoElemento = null;
@@ -45,9 +52,10 @@ setTimeout(() => {
         ultimoElemento.click();
         console.log('00. Avaliação Sem Comentário - preenchido');
     }
-}, 12000); // Intervalo de 4 segundos antes de clicar no último elemento
 
-    // Seleciona a nota de avaliação do ticket
+}, 10000); // Intervalo de 3 segundos antes de remover os caracteres do input
+
+   // Seleciona a nota de avaliação do ticket
     var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
     if (Primeiranota) {
         var Notaticket = Primeiranota.textContent; // Obtém a nota do ticket
