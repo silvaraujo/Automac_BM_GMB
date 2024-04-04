@@ -22,7 +22,7 @@ setTimeout(() => {
     } else {
         console.error("Botão não encontrado.");
     }
-}, 8000); // Intervalo de 2 segundos antes de clicar no botão
+}, 10000); // Intervalo de 2 segundos antes de clicar no botão
 
 setTimeout(() => {
     var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
@@ -33,7 +33,7 @@ setTimeout(() => {
     var event = new Event('input', { bubbles: true });
     input.dispatchEvent(event);
 
-    const itens = document.querySelectorAll(".item-list-container");
+ const itens = document.querySelectorAll(".item-list-container");
 
     let ultimoElemento = null;
 
@@ -46,14 +46,8 @@ setTimeout(() => {
             ultimoElemento = labelElement;
         }
     });
-
-    // Clica apenas no último elemento encontrado
-    if (ultimoElemento) {
-        ultimoElemento.click();
-        console.log('00. Avaliação Sem Comentário - preenchido');
-    }
-
-}, 10000); // Intervalo de 3 segundos antes de remover os caracteres do input
+    
+}, 12000); // Intervalo de 3 segundos antes de remover os caracteres do input
 
    // Seleciona a nota de avaliação do ticket
     var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
@@ -83,4 +77,26 @@ labels.forEach(function(label) {
         label.click();
     }
 });
-}, 15000); // Intervalo de 4 segundos antes de clicar no último elemento
+}, 16000); // Intervalo de 4 segundos antes de clicar no último elemento
+
+ //espera para colocar a avaliação
+    setTimeout(() => {
+    // Clica apenas no último elemento encontrado
+    if (ultimoElemento) {
+        ultimoElemento.click();
+        console.log('00. Avaliação Sem Comentário - preenchido');
+    } else {console.log('ultimo elemento não encontrado')}
+}, 17000); // Intervalo de 3 segundos antes de remover os caracteres do input
+
+setTimeout(() => {
+// Selecionando o elemento pelo seletor CSS
+const elemento = document.querySelector("a.apply[data-ng-click='applyTags({post: ticket, tags: tags});notifyTagChanges(ticket)']");
+
+// Verificando se o elemento foi encontrado
+if (elemento) {
+    // Simulando um clique no elemento
+    elemento.click();
+} else {
+    console.error("Elemento não encontrado.");
+}
+}, 25000); // Intervalo de 4 segundos antes de clicar no último elemento
