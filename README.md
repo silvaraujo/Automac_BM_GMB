@@ -132,16 +132,74 @@ if (avaliacaoSemComentarioItem) {
     console.log("O elemento '00. Avaliação Sem Comentário' não foi encontrado.");
 }
 ```
-### 2.2.2 - Condicional das notas Notas.
+### 2.2.2 - Escrever "Nota" na barra de pesquisa.
+	>Foi a solução necessária para conseguir preencher as notas, devido a peculiaridade do AngularJS 
+Simula um clique na barra
+```JavaScript
+// Selecionando o botão pelo seletor CSS
+var button = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > a.button.tags.tooltipstered");
+
+// Verificando se o botão foi encontrado
+if (button) {
+    // Simulando um clique no botão
+    button.click();
+} else {
+    console.error("Botão não encontrado.");
+}
+
+```
+Localiza e preenche a barra com o nome "Nota"
+```JavaScript
+// Selecionando o input pelo seletor CSS
+var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+
+// Verificando se o input foi encontrado
+if (input) {
+    // Definindo o valor do input como "Nota"
+    input.value = "Nota";
+} else {
+    console.error("Input não encontrado.");
+}
+
+```
+
+Remove 1 caracter para ativar o script angularJS
+```JavaScript
+// Selecionando o input pelo seletor CSS
+var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+
+// Verificando se o input foi encontrado
+if (input) {
+    // Simulando um clique no input
+    input.click();
+
+    // Removendo o último caractere do valor do input
+    var valorAtual = input.value;
+    input.value = valorAtual.slice(0, -1); // Remove o último caractere
+
+    // Disparando um evento de input para notificar o input sobre a alteração
+    var event = new Event('input', { bubbles: true });
+    input.dispatchEvent(event);
+} else {
+    console.error("Input não encontrado.");
+}
+
+
+```
+
+### 2.2.3 - Condicional do preenchimento das Notas.
 
 ```JavaScript
-// Selecionando o elemento correspondente ao item "00. Avaliação Sem Comentário"
-var avaliacaoSemComentarioItem = document.querySelector(".item-list.tooltipster.ng-scope.blank:nth-of-type(1)");
+// Localizando todas as labels com data-ng-class="tag.selection" e classe "ng-binding blank"
+var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
 
-// Simulando o clique no elemento
-if (avaliacaoSemComentarioItem) {
-    avaliacaoSemComentarioItem.click();
-} else {
-    console.log("O elemento '00. Avaliação Sem Comentário' não foi encontrado.");
-}
+// Iterando sobre todas as labels encontradas
+labels.forEach(function(label) {
+    // Verificando se o conteúdo da label é "Nota 5"
+    if (label.textContent.trim() === "Nota 5") {
+        console.log("Adicionando nota 5", label.textContent.trim());
+        // Simulando um clique na label
+        label.click();
+    }
+});
 ```
