@@ -17,6 +17,7 @@ setTimeout(() => {
     // armazena a nota
     var Notaticket = Primeiranota.textContent;
     console.log("A nota da avaliação é:",Notaticket);
+    var NotaDoTicket = "Nota " + Notaticket;
     
     // Clica em "Abrir Ticket"
     setTimeout(() => {
