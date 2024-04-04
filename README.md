@@ -122,6 +122,17 @@ if (ticketopen) {
 ### 2.2.1 - 00 avaliação sem comentário.
 
 ```JavaScript
+// Selecionando o botão pelo seletor CSS
+var button = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > a.button.tags.tooltipstered");
+
+// Verificando se o botão foi encontrado
+if (button) {
+    // Simulando um clique no botão
+    button.click();
+} else {
+    console.error("Botão não encontrado.");
+}
+
 // Selecionando o elemento correspondente ao item "00. Avaliação Sem Comentário"
 var avaliacaoSemComentarioItem = document.querySelector(".item-list.tooltipster.ng-scope.blank:nth-of-type(1)");
 
