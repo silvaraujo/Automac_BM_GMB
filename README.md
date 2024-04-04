@@ -5,7 +5,6 @@ O viés do projeto é automatizar a criação e o preenchimento de tickets repet
 
 Link do relatório: https://app.buzzmonitor.com.br/reports/65a57e838607cd490c6d76cc
 ## 1.0 - AUTOMAÇÃO NA CRIAÇÃO DO TICKET 
->lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, no final do código.
 
 ### 1.1 - PRIMEIRA TELA
 
