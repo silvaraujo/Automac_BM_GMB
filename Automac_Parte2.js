@@ -13,7 +13,7 @@ setTimeout(() => {
 
 // Selecionando o botão pelo seletor CSS
 setTimeout(() => {
-    var button = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > a.button.tags.tooltipstered");
+    var button = document.querySelector("#tags-list-container");
 
     // Verificando se o botão foi encontrado
     if (button) {
