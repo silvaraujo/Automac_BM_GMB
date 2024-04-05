@@ -1,5 +1,7 @@
 ## 2.0 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET(Em andamento)
 >lembrar de adicionar o caso onde o ticket já foi aberto anteriormente, antes de começar o código.
+>O código com o botão OK está no VSCODE
+>O botão de sentimentalização desse comentário vira o penúltimo, antepenúltimo, n, n-1, ... do selector
 
 ### 2.1 - CONEXÃO COM O "Automac_Part1" E ABERTURA DO TICKET
 Após o envio do Json, usamos esse comando para abrir o ticket
