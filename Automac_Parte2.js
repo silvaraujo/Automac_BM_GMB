@@ -32,20 +32,6 @@ setTimeout(() => {
     // Disparando um evento de input para notificar o input sobre a alteração
     var event = new Event('input', { bubbles: true });
     input.dispatchEvent(event);
-
- const itens = document.querySelectorAll(".item-list-container");
-
-    let ultimoElemento = null;
-
-    // Itera sobre os elementos encontrados
-    itens.forEach(item => {
-        // Verifica se o elemento corresponde ao seletor específico
-        const labelElement = item.querySelector('label.blank');
-        if (labelElement && labelElement.innerText.trim() === '00. Avaliação Sem Comentário') {
-            // Atualiza o último elemento encontrado
-            ultimoElemento = labelElement;
-        }
-    });
     
 }, 12000); // Intervalo de 3 segundos antes de remover os caracteres do input
 
@@ -79,14 +65,39 @@ labels.forEach(function(label) {
 });
 }, 16000); // Intervalo de 4 segundos antes de clicar no último elemento
 
- //espera para colocar a avaliação
-    setTimeout(() => {
-    // Clica apenas no último elemento encontrado
-    if (ultimoElemento) {
-        ultimoElemento.click();
-        console.log('00. Avaliação Sem Comentário - preenchido');
-    } else {console.log('ultimo elemento não encontrado')}
-}, 17000); // Intervalo de 3 segundos antes de remover os caracteres do input
+ // Espera para colocar a avaliação
+//espera para colocar a avaliação
+setTimeout(() => {
+    const itens = document.querySelectorAll(".item-list-container");
+let antepenultimoElemento = null;
+let penultimoElemento = null;
+let ultimoElemento = null;
+let Ava = null;
+// Itera sobre os elementos encontrados
+itens.forEach(item => {
+    // Verifica se o elemento corresponde ao seletor específico
+    const labelElement = item.querySelector('label.blank');
+    if (labelElement && labelElement.innerText.trim() === '00. Avaliação Sem Comentário') {
+        // Atualiza os elementos
+        Ava = antepenultimoElemento ;
+        antepenultimoElemento = penultimoElemento;
+        penultimoElemento = ultimoElemento;
+        ultimoElemento = labelElement;
+    }
+});
+    
+    // Clica apenas no último elemento encontrado após o intervalo de tempo
+    if (Ava) {
+        setTimeout(() => {
+            Ava.click();
+            console.log('00. Avaliação Sem Comentário - preenchido');
+        }, 5000); // Intervalo de 3 segundos antes de clicar no último elemento
+    } else {
+        console.log('Último elemento não encontrado');
+    }
+}, 17000); // Intervalo de 17 segundos antes de buscar e clicar no último elemento
+
+
 
 setTimeout(() => {
 // Selecionando o elemento pelo seletor CSS
