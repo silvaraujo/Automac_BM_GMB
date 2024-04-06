@@ -209,6 +209,39 @@ function processarSentimento(nota) {
 
 });
 
+     esperarEExecutar(40000, () => {  
+    // Resolve o ticket
+// Seleciona o elemento <select> pelo ID
+var selectElement = document.getElementById("ticket-status");
+
+// Verifica se o elemento foi encontrado
+if (selectElement) {
+    // Define o índice da opção "Resolvido" como selecionado
+    selectElement.selectedIndex = 3;
+    
+    // Dispara o evento de mudança para notificar a seleção da opção
+    var changeEvent = new Event("change", { bubbles: true });
+    selectElement.dispatchEvent(changeEvent);
+    
+    console.log("Opção 'Resolvido' selecionada.");
+} else {
+    console.error("Elemento <select> não encontrado.");
+}
+         });
+
+     esperarEExecutar(45000, () => { 
+
+         var apertavoltar = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > a");
+
+    if (apertavoltar) {
+    apertavoltar.click();
+    console.log("Voltando para a posição inicial.");
+    } else {
+    console.error("Botão de voltar não encontrado.");
+    }
+
+
+         });
 }
 // Chamada da função principal para iniciar a automação das interações
 automatizarInteracoes();
