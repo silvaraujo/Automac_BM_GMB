@@ -158,8 +158,57 @@ if (Primeiranota) {
 }
 
     });
-  
+
+   esperarEExecutar(35000, () => {
+      var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+
+if (Primeiranota) {
+    var nota = parseInt(Primeiranota.textContent.trim());
+    processarSentimento(nota);
+} else {
+    console.error("Primeira nota não encontrada.");
 }
 
+function processarSentimento(nota) {
+    var sentimentoElemento;
+    var xpathElemento;
+
+    switch (nota) {
+        case 4:
+        case 5:
+            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[1]';
+            sentimentoElemento = document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.positive.tooltipstered") ||
+                document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.positive.on.tooltipstered");
+            break;
+        case 3:
+            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[2]';
+            sentimentoElemento = document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.neutral.on.tooltipstered") ||
+                document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.neutral.tooltipstered");
+            break;
+        default:
+            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[3]';
+            sentimentoElemento = document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.negative.tooltipstered") ||
+                document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.negative.on.tooltipstered");
+    }
+
+    if (sentimentoElemento) {
+        sentimentoElemento.click();
+        console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
+    } else {
+        var xpathResult = document.evaluate(xpathElemento, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+        var elementoXPath = xpathResult.singleNodeValue;
+        
+        if (elementoXPath) {
+            elementoXPath.click();
+            console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
+        } else {
+            console.error("Botão de sentimento não encontrado");
+        }
+    }
+}
+
+});
+
+}
 // Chamada da função principal para iniciar a automação das interações
 automatizarInteracoes();
