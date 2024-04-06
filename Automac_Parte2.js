@@ -119,6 +119,7 @@ if (Primeiranota) {
             console.log("Sentimento da avaliação preenchido - positivo.");
         } else {
             console.error("Nenhum elemento positivo encontrado.");
+            return;
         }
     }
     // Caso neutro (nota igual a 3)
@@ -133,6 +134,7 @@ if (Primeiranota) {
             console.log("Sentimento da avaliação preenchido - neutro.");
         } else {
             console.error("Nenhum elemento neutro encontrado.");
+            return;
         }
     }
     // Caso negativo (nota menor ou igual a 2)
@@ -147,6 +149,7 @@ if (Primeiranota) {
             console.log("Sentimento da avaliação preenchido - negativo.");
         } else {
             console.error("Nenhum elemento negativo encontrado.");
+            return;
         }
     }
 } else {
