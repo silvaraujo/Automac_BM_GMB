@@ -90,11 +90,72 @@ function automatizarInteracoes() {
         const elemento = document.querySelector("a.apply[data-ng-click='applyTags({post: ticket, tags: tags});notifyTagChanges(ticket)']");
         if (elemento) {
             elemento.click();
+            console.log("Tags aplicadas")
         } else {
             console.error("Elemento não encontrado.");
             return;
         }
     });
+
+    esperarEExecutar(30000, () => {
+        
+    // Sentiments
+var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+
+// Verifica se a Primeiranota foi encontrada
+if (Primeiranota) {
+    // Obtém o valor da nota convertendo para um número
+    var nota = parseInt(Primeiranota.textContent.trim());
+
+    // Caso positivo (nota maior ou igual a 4)
+    if (nota >= 4) {
+        // Sentimentos positivos
+        var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.positive.on");
+
+        // Verifica se há algum elemento retornado
+        if (sentimentos.length > 0) {
+            // Acessa o último elemento do array usando o índice -1 e simula um clique nele
+            sentimentos[sentimentos.length - 1].click();
+            console.log("Sentimento da avaliação preenchido - positivo.");
+        } else {
+            console.error("Nenhum elemento positivo encontrado.");
+        }
+    }
+    // Caso neutro (nota igual a 3)
+    else if (nota === 3) {
+        // Sentimento neutro
+        var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.neutral");
+
+        // Verifica se há algum elemento retornado
+        if (sentimentos.length > 0) {
+            // Acessa o último elemento do array usando o índice -1 e simula um clique nele
+            sentimentos[sentimentos.length - 1].click();
+            console.log("Sentimento da avaliação preenchido - neutro.");
+        } else {
+            console.error("Nenhum elemento neutro encontrado.");
+        }
+    }
+    // Caso negativo (nota menor ou igual a 2)
+    else {
+        // Sentimentos negativos
+        var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.negative");
+
+        // Verifica se há algum elemento retornado
+        if (sentimentos.length > 0) {
+            // Acessa o último elemento do array usando o índice -1 e simula um clique nele
+            sentimentos[sentimentos.length - 1].click();
+            console.log("Sentimento da avaliação preenchido - negativo.");
+        } else {
+            console.error("Nenhum elemento negativo encontrado.");
+        }
+    }
+} else {
+    console.error("Primeira nota não encontrada.");
+    return;
+}
+
+    });
+  
 }
 
 // Chamada da função principal para iniciar a automação das interações
