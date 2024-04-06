@@ -99,7 +99,7 @@ function automatizarInteracoes() {
 
     esperarEExecutar(30000, () => {
         
-    // Sentiments
+    // Sentimentos da avaliação
 var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
 
 // Verifica se a Primeiranota foi encontrada
