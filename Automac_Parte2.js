@@ -1,48 +1,36 @@
-// Função para esperar um determinado tempo e realizar uma ação
-function esperarEExecutar(tempo, acao) {
+function esperarEExecutar(tempo, acao) { // Função geral de intervalo p/ realizar uma ação
     setTimeout(acao, tempo);
 }
 
-// Função principal que contém todas as ações a serem executadas
-function automatizarInteracoes() {
-    esperarEExecutar(4000, () => {
+function automatizarInteracoes() { // Função principal
+    
+    esperarEExecutar(5000, () => { // Abre o ticket
         var ticketopen = document.querySelector('a.open-ticket.ng-scope');
         if (ticketopen) {
             ticketopen.click();
             console.log("Ticket aberto para preencher.");
         } else {
             console.error("Ticket não encontrado.");
-            return;
         }
     });
 
-    esperarEExecutar(10000, () => {
+    esperarEExecutar(10000, () => { // Abre a caixa lateral de tags do ticket
         var button = document.querySelector("#tags-list-container");
         if (button) {
             button.click();
         } else {
             console.error("Botão não encontrado.");
-            return;
         }
     });
 
-    esperarEExecutar(12000, () => {
-        var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
-        var valorAtual = input.value;
-        input.value = valorAtual.slice(0, -6);
-        var event = new Event('input', { bubbles: true });
-        input.dispatchEvent(event);
-    });
-
-    esperarEExecutar(16000, () => {
+    esperarEExecutar(15000, () => { //Preenche a nota do ticket
         var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
         if (Primeiranota) {
             var Notaticket = Primeiranota.textContent;
             console.log("A nota da avaliação é:", Notaticket);
             var NotaDoTicket = "Nota " + Notaticket;
         } else {
-            console.error("Nota não encontrada");
-            return;
+            console.error("Nota não encontrada");            
         }
 
         var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
@@ -57,7 +45,15 @@ function automatizarInteracoes() {
         });
     });
 
-    esperarEExecutar(17000, () => {
+     esperarEExecutar(16000, () => { //Devido a limitações do AngularJS e Javascript, foi necessário adicioná-lo
+        var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+        var valorAtual = input.value;
+        input.value = valorAtual.slice(0, -6);
+        var event = new Event('input', { bubbles: true });
+        input.dispatchEvent(event);
+    });
+
+    esperarEExecutar(20000, () => { //Preenche a tag Avaliação Sem Comentário
         const itens = document.querySelectorAll(".item-list-container");
         let antepenultimoElemento = null;
         let penultimoElemento = null;
@@ -65,7 +61,7 @@ function automatizarInteracoes() {
 
         let Ava = null;
 
-        itens.forEach(item => {
+        itens.forEach(item => { //contador de seletores
             const labelElement = item.querySelector('label.blank');
             if (labelElement && labelElement.innerText.trim() === '00. Avaliação Sem Comentário') {
                 Ava = antepenultimoElemento;
@@ -76,29 +72,26 @@ function automatizarInteracoes() {
         });
 
         if (Ava) {
-            esperarEExecutar(5000, () => {
+            esperarEExecutar(5000, () => { //preenchimento do seletor indicado na página - O 4° de trás para frente
                 Ava.click();
                 console.log('Tag - Avaliação Sem Comentário - preenchida');
             });
         } else {
-            console.error('Último elemento não encontrado');
-            return;
+            console.error('Último elemento não encontrado');            
         }
     });
 
-    esperarEExecutar(25000, () => {
+    esperarEExecutar(25000, () => { //aplica as tags
         const elemento = document.querySelector("a.apply[data-ng-click='applyTags({post: ticket, tags: tags});notifyTagChanges(ticket)']");
         if (elemento) {
             elemento.click();
-            console.log("Tags aplicadas")
+            console.log("Tags aplicadas!")
         } else {
-            console.error("Elemento não encontrado.");
-            return;
+            console.error("Elemento não encontrado.");          
         }
     });
 
-    esperarEExecutar(30000, () => {
-        
+    esperarEExecutar(30000, () => {   //Aplica o sentimento da avaliação 
     // Sentimentos da avaliação
 var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
 
@@ -159,17 +152,17 @@ if (Primeiranota) {
 
     });
 
-   esperarEExecutar(35000, () => {
+   esperarEExecutar(35000, () => { //Aplica o sentimento no ticket
       var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
 
-if (Primeiranota) {
+if (Primeiranota) {  
     var nota = parseInt(Primeiranota.textContent.trim());
     processarSentimento(nota);
 } else {
     console.error("Primeira nota não encontrada.");
 }
 
-function processarSentimento(nota) {
+function processarSentimento(nota) { //O desafio foi fazer o código encontrar o seletor correto visto que ele muda de endereço dependendo do ticket
     var sentimentoElemento;
     var xpathElemento;
 
