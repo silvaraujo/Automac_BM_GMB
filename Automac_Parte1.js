@@ -1,7 +1,7 @@
 setTimeout(() => {
     // Procura o elemento HTML que contém as iniciais da marca
     const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
-    const brandValue = brandSpan ? brandSpan.textContent : ''; // Obtém o texto das iniciais da marca, se existirem
+    const brandValue = brandSpan ? brandSpan.textContent : ''; // Obtém o texto das iniciais da marca
 
     if (brandValue) {
         // Verifica se as iniciais da marca correspondem a "C" (Casas Bahia) ou não
@@ -38,7 +38,7 @@ setTimeout(() => {
                     return;
                 }
             }
-//-------------Lembrar de colocar um if else aqui, por segurança, visto que não se sabe se o código deles falham o enviam vázio na hora de enviar o Json
+
             // Preenche a marca do ticket com base nas iniciais da marca
             setTimeout(() => {
                 if (brandValue === 'C') {
@@ -48,7 +48,7 @@ setTimeout(() => {
                     preencherMarca("616038478607cd31975c4006_ponto"); // Preenche a marca como Ponto
                     console.log("Marca preenchida como PIN"); // Confirmação de que a marca foi preenchida como Ponto
                 }
-//--------------------------------------------------------------------------------------------------------------------------------------------
+
                 // Função para preencher o responsável do ticket
                 setTimeout(() => {   //verificar se é mesmo necessário esse setTimeout
                     function preencherResponsavel(nomeResponsavel) {
@@ -63,7 +63,6 @@ setTimeout(() => {
                     }
 
                     // Preenche o responsável do ticket como "Caio Araújo"
-                    setTimeout(() => {
                         preencherResponsavel("Caio Araújo"); // Preenche o responsável como "Caio Araújo"
                         console.log("Responsável preenchido - Caio"); // Confirmação de que o responsável foi preenchido como "Caio"
 
@@ -77,13 +76,13 @@ setTimeout(() => {
                                 element1.click(); // Simula um clique no elemento para enviar o formulário
                                 console.log("Json enviado!"); // Confirmação de que o JSON foi enviado
                             } else {
-                                console.error("Elemento não encontrado com o XPath fornecido."); // Elemento não encontrado com o XPath fornecido
+                                console.error("Elemento não encontrado pelo XPath fornecido."); // Elemento não encontrado com o XPath fornecido
                                 return;
                             }
-                        }, 3000); // Espera 3 segundos antes de enviar o formulário
-                    }, 2000); // Espera 2 segundos antes de preencher o responsável
-                }, 2000); // Espera 2 segundos antes de selecionar o responsável
-            }, 2000); // Espera 2 segundos antes de preencher
-        }, 2000); // Espera 2 segundos antes de selecionar a marca
-    }, 2000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
-}, 1000); // Espera 1 segundo antes de armazenar a marca e a nota
+                        }, 5000); // Espera 3 segundos antes de enviar o formulário
+                    
+                }, 5000); // Espera 2 segundos antes de selecionar o responsável
+            }, 5000); // Espera 2 segundos antes de preencher
+        }, 5000); // Espera 2 segundos antes de selecionar a marca
+    }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
+}, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
