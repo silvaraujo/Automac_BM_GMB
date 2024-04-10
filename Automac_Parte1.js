@@ -83,5 +83,20 @@ function AbrirTicket() {
         }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
     }, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
 }
-// Chamando a função AbrirTicket
-AbrirTicket();
+
+//coletor generalizado dos comentários com ou sem texto
+//p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if="::post.hasNoMedia && !post.isLinkedInPostShare"][id^="content-bm-posts-saas"]
+
+const comentario = document.querySelector("p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if=\"::post.hasNoMedia && !post.isLinkedInPostShare\"][id^=\"content-bm-posts-saas\"]").textContent;
+
+if (comentario === "") {
+    console.log("comentário vazio");
+    //executa o script padrão
+    // Chamando a função AbrirTicket
+    AbrirTicket();
+} else {
+    console.log("comentário contém texto:", comentario);
+    //não abrimos o ticket
+    //adicionamos +1 no contador
+    //passamos para a próxima lista
+}
