@@ -2,7 +2,8 @@
 //contagem direcionadora de página
 let contador = 0;
 
-function AbrirTicket() {
+function AbrirTicket() {    contador++;
+
     setTimeout(() => {
         // Procura o elemento HTML que contém as iniciais da marca
         const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
@@ -95,8 +96,10 @@ const comentario = document.querySelector("p.content.noiframe.ng-binding.ng-scop
 
 if (comentario === "") {
     console.log("comentário sem avaliação - apto para 1° fase");
+    setTimeout(() => {
     // Chamando a função AbrirTicket
     AbrirTicket();    
+    }, 5000); // Espera 5 segundos antes de chamar a função
 } else {
     console.log("comentário contém texto:", comentario);
     //adicionamos +1 no contador
@@ -356,7 +359,7 @@ if (selectElement) {
 const alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
 const alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
 
-if alerta { //não executamos a parte 2. Ou seja, não abre para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
+if (alerta) { //não executamos a parte 2. Ou seja, não abre para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
   console.log("Ticket já foi aberto anteriormente");
    //clica no botão ok
    alerta_ok.click();
@@ -364,12 +367,10 @@ if alerta { //não executamos a parte 2. Ou seja, não abre para preencher o tic
     contador++;
     //passamos para a próxima lista no final do código
 } else {
+    setTimeout(() => {
     // Chamada da função principal para iniciar a automação das interações
     automatizarInteracoes();
-    //adicionamos +1 no contador
-    contador++;
+    }, 40000); // Espera 40 segundos antes de chamar a função
     //passamos para a próxima lista no final do código
 }
-
 //vamos estar na posição inicial e com o ticket devidamente observado pelo algoritmo. Logo, passamos para a próxima lista usando a lógica do contador
-console.log(contador);
