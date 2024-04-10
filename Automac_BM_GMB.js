@@ -354,10 +354,10 @@ if (selectElement) {
 
          });
 }
-
+esperarEExecutar(35000, () => { // Espera 35 segundos antes de chamar a função
 //localiza a aba de alerta e seu botão
-const alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
-const alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
+var alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
+var alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
 
 if (alerta) { //não executamos a parte 2. Ou seja, não abre para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
   console.log("Ticket já foi aberto anteriormente");
@@ -373,4 +373,20 @@ if (alerta) { //não executamos a parte 2. Ou seja, não abre para preencher o t
     }, 40000); // Espera 40 segundos antes de chamar a função
     //passamos para a próxima lista no final do código
 }
+    });
+    
 //vamos estar na posição inicial e com o ticket devidamente observado pelo algoritmo. Logo, passamos para a próxima lista usando a lógica do contador
+esperarEExecutar(90000, () => { // Espera 90 segundos antes de chamar a função
+
+let contadordepag = contador.toString();
+let ultimoDigito = contadordepag.charAt(contadordepag.length - 1); // Obtendo o último dígito
+
+var botao_dir = document.querySelector("#data-pagination > a.bt.right.enabled.tooltipstered");
+var botao_esq = document.querySelector("#data-pagination > a.bt.left.enabled.tooltipstered");
+const constante = 4
+if (ultimoDigito < constante) {
+    botao_dir.click();    
+} else {
+    botao_esq.click();   
+}
+    });
