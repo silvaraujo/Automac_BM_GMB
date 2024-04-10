@@ -12,8 +12,7 @@ function AbrirTicket() {
                 console.log("Esse ticket é do Ponto"); // Marca não é Casas Bahia
             }
         } else {
-            console.error("Marca não encontrada"); // Iniciais da marca não encontradas
-            return;
+            console.error("Marca não encontrada"); // Iniciais da marca não encontradas            
         }
 
         // Clica no botão "Abrir Ticket"
@@ -24,7 +23,6 @@ function AbrirTicket() {
                 console.log("Ticket aberto"); // Confirmação de que o ticket foi aberto
             } else {
                 console.error("Botão para abrir novo ticket não encontrado com o seletor.");
-                return;
             }
 
             // Função para preencher a marca do ticket
@@ -36,7 +34,6 @@ function AbrirTicket() {
                         selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
                     } else {
                         console.log("Elemento da marca não encontrado com o ID.");
-                        return;
                     }
                 }
 
@@ -59,7 +56,6 @@ function AbrirTicket() {
                                 selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
                             } else {
                                 console.error("Elemento do responsável não encontrado.");
-                                return;
                             }
                         }
 
@@ -78,7 +74,6 @@ function AbrirTicket() {
                                 console.log("Json enviado!"); // Confirmação de que o JSON foi enviado
                             } else {
                                 console.error("Elemento não encontrado pelo XPath fornecido."); // Elemento não encontrado com o XPath fornecido
-                                return;
                             }
                         }, 5000); // Espera 3 segundos antes de enviar o formulário
 
@@ -88,6 +83,5 @@ function AbrirTicket() {
         }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
     }, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
 }
-
 // Chamando a função AbrirTicket
 AbrirTicket();
