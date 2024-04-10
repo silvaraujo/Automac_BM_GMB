@@ -1,68 +1,69 @@
-setTimeout(() => {
-    // Procura o elemento HTML que contém as iniciais da marca
-    const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
-    const brandValue = brandSpan ? brandSpan.textContent : ''; // Obtém o texto das iniciais da marca
-
-    if (brandValue) {
-        // Verifica se as iniciais da marca correspondem a "C" (Casas Bahia) ou não
-        if (brandValue === 'C') {
-            console.log("Esse ticket é das Casas Bahia"); // Marca é Casas Bahia
-        } else {
-            console.log("Esse ticket é do Ponto"); // Marca não é Casas Bahia
-        }
-    } else {
-        console.error("Marca não encontrada"); // Iniciais da marca não encontradas
-        return;
-    }
-
-    // Clica no botão "Abrir Ticket"
+function AbrirTicket() {
     setTimeout(() => {
-        const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
-        if (newTicketButton) {
-            newTicketButton.click(); // Simula um clique no botão "Abrir Ticket"
-            console.log("Ticket aberto"); // Confirmação de que o ticket foi aberto
+        // Procura o elemento HTML que contém as iniciais da marca
+        const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
+        const brandValue = brandSpan ? brandSpan.textContent : ''; // Obtém o texto das iniciais da marca
+
+        if (brandValue) {
+            // Verifica se as iniciais da marca correspondem a "C" (Casas Bahia) ou não
+            if (brandValue === 'C') {
+                console.log("Esse ticket é das Casas Bahia"); // Marca é Casas Bahia
+            } else {
+                console.log("Esse ticket é do Ponto"); // Marca não é Casas Bahia
+            }
         } else {
-            console.error("Botão para abrir novo ticket não encontrado com o seletor.");
+            console.error("Marca não encontrada"); // Iniciais da marca não encontradas
             return;
         }
 
-        // Função para preencher a marca do ticket
+        // Clica no botão "Abrir Ticket"
         setTimeout(() => {
-            function preencherMarca(marca) {
-                const selectElement = document.getElementById("ticket-brand"); // Encontra o elemento select para a marca
-                if (selectElement) {
-                    selectElement.value = marca; // Define o valor da marca no select
-                    selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
-                } else {
-                    console.log("Elemento da marca não encontrado com o ID.");
-                    return;
-                }
+            const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
+            if (newTicketButton) {
+                newTicketButton.click(); // Simula um clique no botão "Abrir Ticket"
+                console.log("Ticket aberto"); // Confirmação de que o ticket foi aberto
+            } else {
+                console.error("Botão para abrir novo ticket não encontrado com o seletor.");
+                return;
             }
 
-            // Preenche a marca do ticket com base nas iniciais da marca
+            // Função para preencher a marca do ticket
             setTimeout(() => {
-                if (brandValue === 'C') {
-                    preencherMarca("616038478607cd31975c4006_casas_bahia"); // Preenche a marca como Casas Bahia
-                    console.log("Marca preenchida como CB"); // Confirmação de que a marca foi preenchida como Casas Bahia
-                } else {
-                    preencherMarca("616038478607cd31975c4006_ponto"); // Preenche a marca como Ponto
-                    console.log("Marca preenchida como PIN"); // Confirmação de que a marca foi preenchida como Ponto
+                function preencherMarca(marca) {
+                    const selectElement = document.getElementById("ticket-brand"); // Encontra o elemento select para a marca
+                    if (selectElement) {
+                        selectElement.value = marca; // Define o valor da marca no select
+                        selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
+                    } else {
+                        console.log("Elemento da marca não encontrado com o ID.");
+                        return;
+                    }
                 }
 
-                // Função para preencher o responsável do ticket
-                setTimeout(() => {   //verificar se é mesmo necessário esse setTimeout
-                    function preencherResponsavel(nomeResponsavel) {
-                        const selectElement = document.querySelector("select.responsible-select"); // Encontra o select para o responsável
-                        if (selectElement) {
-                            selectElement.value = nomeResponsavel; // Define o valor do responsável no select
-                            selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
-                        } else {
-                            console.error("Elemento do responsável não encontrado.");
-                            return;
-                        }
+                // Preenche a marca do ticket com base nas iniciais da marca
+                setTimeout(() => {
+                    if (brandValue === 'C') {
+                        preencherMarca("616038478607cd31975c4006_casas_bahia"); // Preenche a marca como Casas Bahia
+                        console.log("Marca preenchida como CB"); // Confirmação de que a marca foi preenchida como Casas Bahia
+                    } else {
+                        preencherMarca("616038478607cd31975c4006_ponto"); // Preenche a marca como Ponto
+                        console.log("Marca preenchida como PIN"); // Confirmação de que a marca foi preenchida como Ponto
                     }
 
-                    // Preenche o responsável do ticket como "Caio Araújo"
+                    // Função para preencher o responsável do ticket
+                    setTimeout(() => {
+                        function preencherResponsavel(nomeResponsavel) {
+                            const selectElement = document.querySelector("select.responsible-select"); // Encontra o select para o responsável
+                            if (selectElement) {
+                                selectElement.value = nomeResponsavel; // Define o valor do responsável no select
+                                selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
+                            } else {
+                                console.error("Elemento do responsável não encontrado.");
+                                return;
+                            }
+                        }
+
+                        // Preenche o responsável do ticket como "Caio Araújo"
                         preencherResponsavel("Caio Araújo"); // Preenche o responsável como "Caio Araújo"
                         console.log("Responsável preenchido - Caio"); // Confirmação de que o responsável foi preenchido como "Caio"
 
@@ -80,9 +81,13 @@ setTimeout(() => {
                                 return;
                             }
                         }, 5000); // Espera 3 segundos antes de enviar o formulário
-                    
-                }, 5000); // Espera 2 segundos antes de selecionar o responsável
-            }, 5000); // Espera 2 segundos antes de preencher
-        }, 5000); // Espera 2 segundos antes de selecionar a marca
-    }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
-}, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
+
+                    }, 5000); // Espera 2 segundos antes de selecionar o responsável
+                }, 5000); // Espera 2 segundos antes de preencher
+            }, 5000); // Espera 2 segundos antes de selecionar a marca
+        }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
+    }, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
+}
+
+// Chamando a função AbrirTicket
+AbrirTicket();
