@@ -90,7 +90,7 @@ function AbrirTicket() {
 const comentario = document.querySelector("p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if=\"::post.hasNoMedia && !post.isLinkedInPostShare\"][id^=\"content-bm-posts-saas\"]").textContent;
 
 if (comentario === "") {
-    console.log("comentário vazio");
+    console.log("comentário, realmente, sem avaliação");
     //executa o script padrão
     // Chamando a função AbrirTicket
     AbrirTicket();
