@@ -1,5 +1,5 @@
 //parte 01
-    function AbrirTicket() {    // Essa função é responsável pela abertura do ticket
+    function AbrirTicket() {    // Essa função é responsável pela abertura do ticket    
         setTimeout(() => {
         // Procura o elemento HTML que contém as iniciais da marca
         const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
@@ -11,7 +11,8 @@
                 console.log("Esse ticket é do Ponto");
             }
         } else {
-            console.error("Marca não encontrada"); // Iniciais da marca não encontradas            
+            console.error("Marca não encontrada"); // Iniciais da marca não encontradas
+            return;
         }
             
         setTimeout(() => {
@@ -22,6 +23,7 @@
                 console.log("Ticket aberto");
             } else {
                 console.error("Botão para abrir novo ticket não encontrado com o seletor.");
+                return;
             }
 
             setTimeout(() => {
@@ -32,6 +34,7 @@
                         selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança no campo
                     } else {
                         console.error("Elemento da marca não encontrado com o ID.");
+                        return;
                     }
                 }
 
@@ -52,6 +55,7 @@
                                 selectElement.dispatchEvent(new Event('change')); // Aciona um evento de mudança
                             } else {
                                 console.error("Elemento do responsável não encontrado.");
+                                return;
                             }
                         }
 
@@ -70,6 +74,7 @@
                                 console.log("Json enviado!"); // Confirmação de que o JSON foi enviado
                             } else {
                                 console.error("Elemento não encontrado pelo XPath fornecido.");
+                                return;
                             }
                         }, 5000); // Espera 5 segundos antes de enviar o formulário
 
@@ -91,7 +96,8 @@ if (comentario === "") { // Essa condicional é responsável por rotular se o co
     AbrirTicket();
     }, 5000);               // Espera 5 segundos antes de chamar a função
 } else {
-    console.log("comentário contém texto:", comentario);  
+    console.log("comentário contém texto:", comentario);
+    
 }
 
     //parte 2 
@@ -107,6 +113,7 @@ function automatizarInteracoes() { // Função principal que contém todas as a�
             console.log("Ticket aberto para preencher.");
         } else {
             console.error("Ticket não encontrado.");
+            return;
         }
     });
 
@@ -116,6 +123,7 @@ function automatizarInteracoes() { // Função principal que contém todas as a�
             list_button.click();
         } else {
             console.error("Botão de tags não encontrado.");
+            return;
         }
     });
 
@@ -135,9 +143,15 @@ function automatizarInteracoes() { // Função principal que contém todas as a�
             var NotaDoTicket = "Nota " + Notaticket; // Transforma no exato texto do input necessário
         } else {
             console.error("Nota do primeiro comentário não encontrada.");
+            return;
         }
+        
         // Localizador da label que preenche as notas
         var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
+        if (!labels) { 
+            console.error("Labels que contém a nota não encontrada.");
+            return;
+        } else {
         labels.forEach(function(label) { // Varre todos os seletores, visto que não há um único localizador para as tags
             var content = label.textContent.trim(); // Retira o conteúdo de texto da tag
             if (content === NotaDoTicket) { // Verifica se esse conteúdo é igual a nota do ticket trabalhado
@@ -147,6 +161,7 @@ function automatizarInteracoes() { // Função principal que contém todas as a�
                 label.click(); // Seleciona a opção
             }
         });
+        }
     });
 
     esperarEExecutar(17000, () => { // Seleciona a tag avaliação sem comentário
@@ -174,6 +189,7 @@ function automatizarInteracoes() { // Função principal que contém todas as a�
             });
         } else {
             console.error('Último elemento não encontrado');
+            return;
         }
     });
 
@@ -184,6 +200,7 @@ function automatizarInteracoes() { // Função principal que contém todas as a�
             console.log("Tags aplicadas")
         } else {
             console.error("Elemento não encontrado.");
+            return;
         }
     });
 
@@ -200,6 +217,7 @@ if (Primeiranota) {
             console.log("Sentimento da avaliação preenchido - positivo.");
         } else {
             console.error("Nenhum elemento positivo encontrado.");
+            return;
         }
     }
     else if (nota === 3) {    // Caso neutro - nota igual a 3
@@ -209,6 +227,7 @@ if (Primeiranota) {
             console.log("Sentimento da avaliação preenchido - neutro.");
         } else {
             console.error("Nenhum elemento neutro encontrado.");
+            return;
         }
     }
 
@@ -219,10 +238,12 @@ if (Primeiranota) {
             console.log("Sentimento da avaliação preenchido - negativo.");
         } else {
             console.error("Nenhum elemento negativo encontrado.");
+            return;
         }
     }
 } else {
     console.error("Nota do primeiro comentário não encontrada.");
+    return;
 }
     });
 
@@ -234,6 +255,7 @@ if (Primeiranota) {
     processarSentimento(nota); //chama a função que preenche o sentimento do ticket
 } else {
     console.error("Primeira nota não encontrada.");
+    return;
 }
 
 function processarSentimento(nota) {  //função responsável pelo preenchimento do ticket
@@ -270,6 +292,7 @@ function processarSentimento(nota) {  //função responsável pelo preenchimento
             console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
         } else {
             console.error("Botão de sentimento não encontrado");
+            return;
         }
     }
 }
@@ -286,6 +309,7 @@ if (selectElement) {
     console.log("Opção 'Resolvido' selecionada.");
 } else {
     console.error("Não foi possível resolver o ticket");
+    return;
 }
          });
 
@@ -296,6 +320,7 @@ if (selectElement) {
     console.log("Voltando para a posição inicial.");
     } else {
     console.error("Botão de voltar não encontrado.");
+    return;
     }
          });
     
