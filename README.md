@@ -13,4 +13,4 @@ Essa parte lida com os mecânismos e critérios para abertura do ticket no relat
 ## Parte 2 - AUTOMAÇÃO NO PREENCHIMENTO DO TICKET
 Essa parte lida com os mecânismos e critérios de preenchimento do ticket no relatório. Além disso, ela retorna a lista inicial de comentários.
 
-## Parte 3 - Nuances de cenários e looping (em andamento)
+## Parte 3 - CRITÉRIOS DE NUANCE DE CENÁRIOS E LOOPING (em andamento)
