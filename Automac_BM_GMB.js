@@ -1,64 +1,55 @@
-//parte 01 ---------------------------------------------------------------------------------------------------------------
-//contagem direcionadora de página
-let contador = 0;
-
-function AbrirTicket() {    contador++;
-
-    setTimeout(() => {
+//parte 01
+    function AbrirTicket() {    // Essa função é responsável pela abertura do ticket
+        setTimeout(() => {
         // Procura o elemento HTML que contém as iniciais da marca
         const brandSpan = document.querySelector('span[data-ng-bind="::brandInitials(post)"]');
         const brandValue = brandSpan ? brandSpan.textContent : ''; // Obtém o texto das iniciais da marca
-
-        if (brandValue) {
-            // Verifica se as iniciais da marca correspondem a "C" (Casas Bahia) ou não
-            if (brandValue === 'C') {
-                console.log("Esse ticket é das Casas Bahia"); // Marca é Casas Bahia
+        if (brandValue) { // Essa condicional trabalha a seleção da marca
+            if (brandValue === 'C') { // Verifica se as iniciais da marca correspondem a "C" (Casas Bahia) ou não
+                console.log("Esse ticket é das Casas Bahia"); 
             } else {
-                console.log("Esse ticket é do Ponto"); // Marca não é Casas Bahia
+                console.log("Esse ticket é do Ponto");
             }
         } else {
             console.error("Marca não encontrada"); // Iniciais da marca não encontradas            
         }
-
-        // Clica no botão "Abrir Ticket"
+            
         setTimeout(() => {
+            // Procura o botão para abrir o ticket
             const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
-            if (newTicketButton) {
-                newTicketButton.click(); // Simula um clique no botão "Abrir Ticket"
-                console.log("Ticket aberto"); // Confirmação de que o ticket foi aberto
+            if (newTicketButton) { 
+                newTicketButton.click(); // Clica no botão "Abrir Ticket"
+                console.log("Ticket aberto");
             } else {
                 console.error("Botão para abrir novo ticket não encontrado com o seletor.");
             }
 
-            // Função para preencher a marca do ticket
             setTimeout(() => {
-                function preencherMarca(marca) {
-                    const selectElement = document.getElementById("ticket-brand"); // Encontra o elemento select para a marca
-                    if (selectElement) {
+                function preencherMarca(marca) { // Essa função preenche a marca do ticket
+                    const selectElement = document.getElementById("ticket-brand"); //Procura o campo select da marca
+                    if (selectElement) { 
                         selectElement.value = marca; // Define o valor da marca no select
-                        selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
+                        selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança no campo
                     } else {
-                        console.log("Elemento da marca não encontrado com o ID.");
+                        console.error("Elemento da marca não encontrado com o ID.");
                     }
                 }
 
-                // Preenche a marca do ticket com base nas iniciais da marca
-                setTimeout(() => {
+                setTimeout(() => { // Preenche a marca do ticket com base nas iniciais da marca
                     if (brandValue === 'C') {
                         preencherMarca("616038478607cd31975c4006_casas_bahia"); // Preenche a marca como Casas Bahia
-                        console.log("Marca preenchida como CB"); // Confirmação de que a marca foi preenchida como Casas Bahia
+                        console.log("Marca preenchida como CB"); 
                     } else {
                         preencherMarca("616038478607cd31975c4006_ponto"); // Preenche a marca como Ponto
-                        console.log("Marca preenchida como PIN"); // Confirmação de que a marca foi preenchida como Ponto
+                        console.log("Marca preenchida como PIN");
                     }
 
-                    // Função para preencher o responsável do ticket
                     setTimeout(() => {
-                        function preencherResponsavel(nomeResponsavel) {
-                            const selectElement = document.querySelector("select.responsible-select"); // Encontra o select para o responsável
+                        function preencherResponsavel(nomeResponsavel) { // Função para preencher o responsável do ticket
+                            const selectElement = document.querySelector("select.responsible-select"); // Encontra o select do responsável do ticket
                             if (selectElement) {
                                 selectElement.value = nomeResponsavel; // Define o valor do responsável no select
-                                selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança para o select
+                                selectElement.dispatchEvent(new Event('change')); // Aciona um evento de mudança
                             } else {
                                 console.error("Elemento do responsável não encontrado.");
                             }
@@ -66,250 +57,215 @@ function AbrirTicket() {    contador++;
 
                         // Preenche o responsável do ticket como "Caio Araújo"
                         preencherResponsavel("Caio Araújo"); // Preenche o responsável como "Caio Araújo"
-                        console.log("Responsável preenchido - Caio"); // Confirmação de que o responsável foi preenchido como "Caio"
+                        console.log("Responsável preenchido - Caio");
 
                         // Envia o formulário do ticket
                         setTimeout(() => {
                             // Encontra o primeiro elemento usando XPath para enviar o formulário
                             var element1 = document.evaluate('//*[@id="ticketForm"]/div[2]/input', document, null,
                                 XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-                            // Verifica se o elemento foi encontrado
+                            // Verifica se esse elemento foi encontrado
                             if (element1) {
                                 element1.click(); // Simula um clique no elemento para enviar o formulário
                                 console.log("Json enviado!"); // Confirmação de que o JSON foi enviado
                             } else {
-                                console.error("Elemento não encontrado pelo XPath fornecido."); // Elemento não encontrado com o XPath fornecido
+                                console.error("Elemento não encontrado pelo XPath fornecido.");
                             }
-                        }, 5000); // Espera 3 segundos antes de enviar o formulário
+                        }, 5000); // Espera 5 segundos antes de enviar o formulário
 
-                    }, 5000); // Espera 2 segundos antes de selecionar o responsável
-                }, 5000); // Espera 2 segundos antes de preencher
-            }, 5000); // Espera 2 segundos antes de selecionar a marca
-        }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
-    }, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
+                    }, 5000); // Espera 5 segundos antes de selecionar o responsável
+                }, 5000); // Espera 5 segundos antes de preencher
+            }, 5000); // Espera 5 segundos antes de selecionar a marca
+        }, 5000); // Espera 5 segundos antes de clicar em "Abrir Ticket"
+    }, 5000); // Espera 5 segundo antes de armazenar a marca e a nota
 }
 
 //coletor generalizado dos comentários com ou sem texto
 //p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if="::post.hasNoMedia && !post.isLinkedInPostShare"][id^="content-bm-posts-saas"]
-
 const comentario = document.querySelector("p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if=\"::post.hasNoMedia && !post.isLinkedInPostShare\"][id^=\"content-bm-posts-saas\"]").textContent;
 
-if (comentario === "") {
-    console.log("comentário sem avaliação - apto para 1° fase");
-    setTimeout(() => {
-    // Chamando a função AbrirTicket
-    AbrirTicket();    
-    }, 5000); // Espera 5 segundos antes de chamar a função
+if (comentario === "") { // Essa condicional é responsável por rotular se o comentário trabalhado tem ou não texto
+    console.log("comentário sem avaliação");
+    setTimeout(() => {     // Adiciona tempo antes de executar a função
+    //Chama a função AbrirTicket
+    AbrirTicket();
+    }, 5000);               // Espera 5 segundos antes de chamar a função
 } else {
-    console.log("comentário contém texto:", comentario);
-    //adicionamos +1 no contador
-    contador++;
-    //passamos para a próxima lista no final do código
+    console.log("comentário contém texto:", comentario);  
 }
 
-//parte 2 --------------------------------------------------------------------------------------------------------------------------
-
-// Função para esperar o tempo determinado e realizar uma ação
-function esperarEExecutar(tempo, acao) {
+    //parte 2 
+function esperarEExecutar(tempo, acao) { // Função para esperar o tempo determinado e realizar uma ação
     setTimeout(acao, tempo);
 }
-
-// Função principal que contém todas as ações a serem executadas
-function automatizarInteracoes() {
-    esperarEExecutar(4000, () => {
+    
+function automatizarInteracoes() { // Função principal que contém todas as ações a serem executadas na parte 2
+    esperarEExecutar(4000, () => { // Entramos no ticket aberto
         var ticketopen = document.querySelector('a.open-ticket.ng-scope');
         if (ticketopen) {
             ticketopen.click();
             console.log("Ticket aberto para preencher.");
         } else {
             console.error("Ticket não encontrado.");
-            return;
         }
     });
 
-    esperarEExecutar(10000, () => {
-        var button = document.querySelector("#tags-list-container");
-        if (button) {
-            button.click();
+    esperarEExecutar(10000, () => { // Procura a lista de tags
+        var list_button = document.querySelector("#tags-list-container");
+        if (list_button) {
+            list_button.click();
         } else {
-            console.error("Botão não encontrado.");
-            return;
+            console.error("Botão de tags não encontrado.");
         }
     });
 
-    esperarEExecutar(12000, () => {
+    esperarEExecutar(12000, () => { // Apaga o texto anterior para evitar bugs
         var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
         var valorAtual = input.value;
-        input.value = valorAtual.slice(0, -6);
+        input.value = valorAtual.slice(0, -6); //apaga 6 caracteres
         var event = new Event('input', { bubbles: true });
         input.dispatchEvent(event);
     });
 
-    esperarEExecutar(16000, () => {
+    esperarEExecutar(16000, () => { // Nessa parte preenchemos a nota dentro da lista de tags
+        //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código   
         var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
         if (Primeiranota) {
-            var Notaticket = Primeiranota.textContent;
-            console.log("A nota da avaliação é:", Notaticket);
-            var NotaDoTicket = "Nota " + Notaticket;
+            var Notaticket = Primeiranota.textContent; // Retira o número inteiro
+            var NotaDoTicket = "Nota " + Notaticket; // Transforma no exato texto do input necessário
         } else {
-            console.error("Nota não encontrada");
-            return;
+            console.error("Nota do primeiro comentário não encontrada.");
         }
-
+        // Localizador da label que preenche as notas
         var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
-        labels.forEach(function(label) {
-            var content = label.textContent.trim();
-            if (content === NotaDoTicket) {
+        labels.forEach(function(label) { // Varre todos os seletores, visto que não há um único localizador para as tags
+            var content = label.textContent.trim(); // Retira o conteúdo de texto da tag
+            if (content === NotaDoTicket) { // Verifica se esse conteúdo é igual a nota do ticket trabalhado
                 var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
-                input.value = NotaDoTicket;
+                input.value = NotaDoTicket; // Preenche as notas tanto no box quanto na barra de pesquisa de tags devido a limitação do código fonte
                 console.log("Preenchendo com a", NotaDoTicket);
-                label.click();
+                label.click(); // Seleciona a opção
             }
         });
     });
 
-    esperarEExecutar(17000, () => {
-        const itens = document.querySelectorAll(".item-list-container");
-        let antepenultimoElemento = null;
+    esperarEExecutar(17000, () => { // Seleciona a tag avaliação sem comentário
+        const itens = document.querySelectorAll(".item-list-container"); //localiza todos os itens da lista de tags
+        let antepenultimoElemento = null; // Essa lógica guarda os 3 últimos valores encontrados
         let penultimoElemento = null;
         let ultimoElemento = null;
 
-        let Ava = null;
+        let ava = null; // Esse let guarda o valor que queremos. Qué é onde se encontra a tag do container trabalhado
 
-        itens.forEach(item => {
+        itens.forEach(item => { //varre os itens
             const labelElement = item.querySelector('label.blank');
             if (labelElement && labelElement.innerText.trim() === '00. Avaliação Sem Comentário') {
-                Ava = antepenultimoElemento;
-                antepenultimoElemento = penultimoElemento;
+                ava = antepenultimoElemento; 
+                antepenultimoElemento = penultimoElemento; // Essa lógica permite que o valor que queremos seja encontrado
                 penultimoElemento = ultimoElemento;
                 ultimoElemento = labelElement;
             }
         });
 
-        if (Ava) {
-            esperarEExecutar(5000, () => {
-                Ava.click();
+        if (ava) {    
+            esperarEExecutar(5000, () => {    // Espera 5 segundos para dar tempo dos itens serem varridos
+                ava.click();
                 console.log('Tag - Avaliação Sem Comentário - preenchida');
             });
         } else {
             console.error('Último elemento não encontrado');
-            return;
         }
     });
 
-    esperarEExecutar(25000, () => {
-        const elemento = document.querySelector("a.apply[data-ng-click='applyTags({post: ticket, tags: tags});notifyTagChanges(ticket)']");
-        if (elemento) {
-            elemento.click();
+    esperarEExecutar(25000, () => {        //clica no botão de aplicar tags
+        const app_tag = document.querySelector("a.apply[data-ng-click='applyTags({post: ticket, tags: tags});notifyTagChanges(ticket)']");
+        if (app_tag) {
+            app_tag.click();
             console.log("Tags aplicadas")
         } else {
             console.error("Elemento não encontrado.");
-            return;
         }
     });
 
-    esperarEExecutar(30000, () => {
-        
-    // Sentimentos da avaliação
+    esperarEExecutar(30000, () => {    // Nessa parte, aplicamos o sentimento na avaliação
+//Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código           
 var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
-
-// Verifica se a Primeiranota foi encontrada
 if (Primeiranota) {
-    // Obtém o valor da nota convertendo para um número
-    var nota = parseInt(Primeiranota.textContent.trim());
+    var nota = parseInt(Primeiranota.textContent.trim()); // Obtém o valor da nota convertendo para um número
 
-    // Caso positivo (nota maior ou igual a 4)
-    if (nota >= 4) {
-        // Sentimentos positivos
+    if (nota >= 4) { // Caso positivo - nota igual ou maior que 4
         var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.positive.on");
-
-        // Verifica se há algum elemento retornado
-        if (sentimentos.length > 0) {
-            // Acessa o último elemento do array usando o índice -1 e simula um clique nele
-            sentimentos[sentimentos.length - 1].click();
+        if (sentimentos.length > 0) {     
+            sentimentos[sentimentos.length - 1].click();     // Acessa o último elemento do array usando o índice -1 e executa um clique nele
             console.log("Sentimento da avaliação preenchido - positivo.");
         } else {
             console.error("Nenhum elemento positivo encontrado.");
-            return;
         }
     }
-    // Caso neutro (nota igual a 3)
-    else if (nota === 3) {
-        // Sentimento neutro
+    else if (nota === 3) {    // Caso neutro - nota igual a 3
         var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.neutral");
-
-        // Verifica se há algum elemento retornado
         if (sentimentos.length > 0) {
-            // Acessa o último elemento do array usando o índice -1 e simula um clique nele
-            sentimentos[sentimentos.length - 1].click();
+            sentimentos[sentimentos.length - 1].click();    // Acessa o último elemento do array usando o índice -1 e executa um clique nele
             console.log("Sentimento da avaliação preenchido - neutro.");
         } else {
             console.error("Nenhum elemento neutro encontrado.");
-            return;
         }
     }
-    // Caso negativo (nota menor ou igual a 2)
-    else {
-        // Sentimentos negativos
-        var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.negative");
 
-        // Verifica se há algum elemento retornado
+    else {    // Caso negativo - nota menor ou igual a 2
+        var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.negative");
         if (sentimentos.length > 0) {
-            // Acessa o último elemento do array usando o índice -1 e simula um clique nele
-            sentimentos[sentimentos.length - 1].click();
+            sentimentos[sentimentos.length - 1].click(); // Acessa o último elemento do array usando o índice -1 e simula um clique nele
             console.log("Sentimento da avaliação preenchido - negativo.");
         } else {
             console.error("Nenhum elemento negativo encontrado.");
-            return;
         }
     }
 } else {
-    console.error("Primeira nota não encontrada.");
-    return;
+    console.error("Nota do primeiro comentário não encontrada.");
 }
-
     });
 
-   esperarEExecutar(35000, () => {
+   esperarEExecutar(35000, () => { //nessa parte aplicamos o sentimento ao ticket
+      //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código    
       var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
-
 if (Primeiranota) {
     var nota = parseInt(Primeiranota.textContent.trim());
-    processarSentimento(nota);
+    processarSentimento(nota); //chama a função que preenche o sentimento do ticket
 } else {
     console.error("Primeira nota não encontrada.");
 }
 
-function processarSentimento(nota) {
+function processarSentimento(nota) {  //função responsável pelo preenchimento do ticket
     var sentimentoElemento;
     var xpathElemento;
 
-    switch (nota) {
-        case 4:
+    switch (nota) {  //esse algoritmo tenta encontrar a o seletor que preenche o sentimento do ticket. O endereço desse seletor muda de caso em caso.
+        case 4:       //pode não ser necessário o uso do query selector mas mantive no código por opção
         case 5:
-            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[1]';
+            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[1]';    //seletores positivos
             sentimentoElemento = document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.positive.tooltipstered") ||
                 document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.positive.on.tooltipstered");
             break;
         case 3:
-            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[2]';
+            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[2]';  //seletores neutros
             sentimentoElemento = document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.neutral.on.tooltipstered") ||
                 document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.neutral.tooltipstered");
             break;
         default:
-            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[3]';
+            xpathElemento = '//*[@id="modal-show-ticket"]/div[1]/div/div[1]/fieldset[5]/div/a[3]';    //seletores negativos
             sentimentoElemento = document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.negative.tooltipstered") ||
                 document.querySelector("fieldset.ticket-sentiment.ng-scope > div > a.negative.on.tooltipstered");
     }
 
-    if (sentimentoElemento) {
+    if (sentimentoElemento) {  //clica na nota atribuida caso tenha sido achada pelo seletor
         sentimentoElemento.click();
         console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
     } else {
         var xpathResult = document.evaluate(xpathElemento, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
         var elementoXPath = xpathResult.singleNodeValue;
         
-        if (elementoXPath) {
+        if (elementoXPath) { //clica na nota atribuida caso tenha sido achada pelo xpath
             elementoXPath.click();
             console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
         } else {
@@ -317,76 +273,45 @@ function processarSentimento(nota) {
         }
     }
 }
-
 });
 
-     esperarEExecutar(40000, () => {  
-    // Resolve o ticket
-// Seleciona o elemento <select> pelo ID
-var selectElement = document.getElementById("ticket-status");
-
-// Verifica se o elemento foi encontrado
-if (selectElement) {
-    // Define o índice da opção "Resolvido" como selecionado
-    selectElement.selectedIndex = 3;
+     esperarEExecutar(40000, () => {  // Resolve o ticket
+var selectElement = document.getElementById("ticket-status");    // Seleciona o elemento <select> pelo ID
+if (selectElement) {    
+    selectElement.selectedIndex = 3;    // Define como índice 3 
     
-    // Dispara o evento de mudança para notificar a seleção da opção
-    var changeEvent = new Event("change", { bubbles: true });
+    var changeEvent = new Event("change", { bubbles: true });    // Dispara o evento de mudança
     selectElement.dispatchEvent(changeEvent);
     
     console.log("Opção 'Resolvido' selecionada.");
 } else {
-    console.error("Elemento <select> não encontrado.");
+    console.error("Não foi possível resolver o ticket");
 }
          });
 
-     esperarEExecutar(45000, () => { 
-
-         var apertavoltar = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > a");
-
+     esperarEExecutar(45000, () => {   //votla a posição inicial
+       var apertavoltar = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > a");
     if (apertavoltar) {
     apertavoltar.click();
     console.log("Voltando para a posição inicial.");
     } else {
     console.error("Botão de voltar não encontrado.");
     }
-
-
          });
-}
-esperarEExecutar(35000, () => { // Espera 35 segundos antes de chamar a função
+    
+}    //fim da função da parte 2
+    
+esperarEExecutar(35000, () => { // Aguarda 25 segundos para verificar o alerta de responsável anterior do ticket
 //localiza a aba de alerta e seu botão
 var alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
 var alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
 
-if (alerta) { //não executamos a parte 2. Ou seja, não abre para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
-  console.log("Ticket já foi aberto anteriormente");
-   //clica no botão ok
-   alerta_ok.click();
-    //adicionamos +1 no contador
-    contador++;
-    //passamos para a próxima lista no final do código
+if (alerta) {  //não executamos a parte 2. Ou seja, não abrimos para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
+console.log("Ticket já foi aberto anteriormente");
+alerta_ok.click();    
 } else {
-    setTimeout(() => {
-    // Chamada da função principal para iniciar a automação das interações
+    setTimeout(() => {     // Chamada da função principal para iniciar a automação das interações
     automatizarInteracoes();
-    }, 40000); // Espera 40 segundos antes de chamar a função
-    //passamos para a próxima lista no final do código
-}
-    });
-    
-//vamos estar na posição inicial e com o ticket devidamente observado pelo algoritmo. Logo, passamos para a próxima lista usando a lógica do contador
-esperarEExecutar(90000, () => { // Espera 90 segundos antes de chamar a função
-
-let contadordepag = contador.toString();
-let ultimoDigito = contadordepag.charAt(contadordepag.length - 1); // Obtendo o último dígito
-
-var botao_dir = document.querySelector("#data-pagination > a.bt.right.enabled.tooltipstered");
-var botao_esq = document.querySelector("#data-pagination > a.bt.left.enabled.tooltipstered");
-const constante = 4
-if (ultimoDigito < constante) {
-    botao_dir.click();    
-} else {
-    botao_esq.click();   
+    }, 40000); // Espera 40 segundos antes de chamar a função da parte 2
 }
     });
