@@ -312,6 +312,6 @@ alerta_ok.click();
 } else {
     setTimeout(() => {     // Chamada da função principal para iniciar a automação das interações
     automatizarInteracoes();
-    }, 40000); // Espera 40 segundos antes de chamar a função da parte 2
+    }, 35000); // Espera 35 segundos antes de chamar a função da parte 2
 }
     });
