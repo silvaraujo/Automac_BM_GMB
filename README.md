@@ -14,4 +14,4 @@ O algoritmo é divido em 3 partes principais:
 >Essa parte lida com os mecânismos e critérios de preenchimento do ticket no relatório. Além disso, ela retorna a lista inicial de comentários.
 
 # Parte 3 - CRITÉRIOS DE NUANCE DE CENÁRIOS E LOOPING (em andamento)
->Essa parte se repete continuamente até acontecer qualquer tipo de erro.
+>Essa parte foca na repetição continua do script. Ela roda até acontecer qualquer tipo de erro.
