@@ -75,9 +75,9 @@ function Auto_BM_GMB() {
                         }, 5000); // Espera 5 segundos antes de enviar o formulário
     
                     }, 3000); // Espera 3 segundos antes de selecionar o responsável
-                }, 2000); // Espera 2 segundos antes de preencher a marca
+                }, 3000); // Espera 3 segundos antes de preencher a marca
         }, 4000); // Espera 4 segundos antes de clicar em "Abrir Ticket"
-    }, 2000); // Espera 2 segundos antes de armazenar a marca e a nota
+    }, 3000); // Espera 3 segundos antes de armazenar a marca e a nota
     }
     
     //parte 2     
@@ -323,7 +323,7 @@ function Auto_BM_GMB() {
     
         setTimeout(() => {     // Adiciona tempo antes de executar a função AbrirTicket
             AbrirTicket();
-        }, 1000);   // Espera 2 segundos antes de chamar a função
+        }, 2000);   // Espera 2 segundos antes de chamar a função
     
         } else {
         console.log("comentário contém texto:", comentario);
@@ -339,11 +339,11 @@ function Auto_BM_GMB() {
     if (alerta) {  //não executamos a parte 2. Ou seja, não abrimos para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
     console.log("Ticket já foi aberto anteriormente");
     alerta_ok.click();    
-    } else {
+        } else {
     
-    automatizarInteracoes(); //executa a parte 2
+            automatizarInteracoes(); //executa a parte 2
     
-    }
+        }
     
     }, 30000); // Aguarda 30 segundos para verificar o alerta de responsável anterior do ticket
     
