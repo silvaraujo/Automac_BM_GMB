@@ -13,7 +13,7 @@ function Auto_BM_GMB() {
             }
         } else {
             console.error("Marca não encontrada"); // Iniciais da marca não encontradas
-            return;
+            return false;
         }          
         setTimeout(() => {
             // Procura o botão para abrir o ticket
@@ -23,7 +23,7 @@ function Auto_BM_GMB() {
                 console.log("Ticket aberto");
             } else {
                 console.error("Botão para abrir novo ticket não encontrado com o seletor.");
-                return;
+                return false;
             }
     
                 function preencherMarca(marca) { // Essa função preenche a marca do ticket
@@ -33,7 +33,7 @@ function Auto_BM_GMB() {
                         selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança no campo
                     } else {
                         console.error("Elemento da marca não encontrado com o ID.");
-                        return;
+                        return false;
                     }
                 }
                 setTimeout(() => { // Preenche a marca do ticket com base nas iniciais da marca
@@ -52,7 +52,7 @@ function Auto_BM_GMB() {
                                 selectElement.dispatchEvent(new Event('change')); // Aciona um evento de mudança
                             } else {
                                 console.error("Elemento do responsável não encontrado.");
-                                return;
+                                return false;
                             }
                         }
                         // Preenche o responsável do ticket como "Caio Araújo"
@@ -70,7 +70,7 @@ function Auto_BM_GMB() {
                                 console.log("Json enviado!"); // Confirmação de que o JSON foi enviado
                             } else {
                                 console.error("Elemento não encontrado pelo XPath fornecido.");
-                                return;
+                                return false;
                             }
                         }, 5000); // Espera 5 segundos antes de enviar o formulário
     
@@ -89,7 +89,7 @@ function Auto_BM_GMB() {
             console.log("Ticket aberto para preencher.");
         } else {
             console.error("Ticket não encontrado.");
-            return;
+            return false;
         }
     
     
@@ -99,7 +99,7 @@ function Auto_BM_GMB() {
                     list_button.click();
                 } else {
                     console.error("Botão de tags não encontrado.");
-                    return;
+                    return false;
                 }
             
     
@@ -119,14 +119,14 @@ function Auto_BM_GMB() {
                             var NotaDoTicket = "Nota " + Notaticket; // Transforma no exato texto do input necessário
                         } else {
                             console.error("Nota do primeiro comentário não encontrada.");
-                            return;
+                            return false;
                         }
         
                         // Localizador da label que preenche as notas
                         var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
                         if (!labels) { 
                             console.error("Labels que contém a nota não encontrada.");
-                            return;
+                            return false;
                         } else {
                         labels.forEach(function(label) { // Varre todos os seletores, visto que não há um único localizador para as tags
                             var content = label.textContent.trim(); // Retira o conteúdo de texto da tag
@@ -165,9 +165,8 @@ function Auto_BM_GMB() {
                                 }, 5000);
                             } else {
                                 console.error('Último elemento não encontrado');
-                                return;
+                                return false;
                             }
-                        
                         
                             setTimeout(() => {        //clica no botão de aplicar tags
                             const app_tag = document.querySelector("a.apply[data-ng-click='applyTags({post: ticket, tags: tags});notifyTagChanges(ticket)']");
@@ -176,10 +175,9 @@ function Auto_BM_GMB() {
                                 console.log("Tags aplicadas")
                             } else {
                                 console.error("Elemento não encontrado.");
-                                return;
+                                return false;
                             }
-                        
-                        
+                             
                                 setTimeout(() => {    // Nessa parte, aplicamos o sentimento na avaliação
                                 //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código           
                                 var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
@@ -193,7 +191,7 @@ function Auto_BM_GMB() {
                                         console.log("Sentimento da avaliação preenchido - positivo.");
                                     } else {
                                         console.error("Nenhum elemento positivo encontrado.");
-                                        return;
+                                        return false;
                                     }
                                 }
                                 else if (nota === 3) {    // Caso neutro - nota igual a 3
@@ -203,7 +201,7 @@ function Auto_BM_GMB() {
                                         console.log("Sentimento da avaliação preenchido - neutro.");
                                     } else {
                                         console.error("Nenhum elemento neutro encontrado.");
-                                        return;
+                                        return false;
                                     }
                                 }
                                 
@@ -214,12 +212,12 @@ function Auto_BM_GMB() {
                                         console.log("Sentimento da avaliação preenchido - negativo.");
                                     } else {
                                         console.error("Nenhum elemento negativo encontrado.");
-                                        return;
+                                        return false;
                                     }
                                 }
                                 } else {
                                 console.error("Nota do primeiro comentário não encontrada.");
-                                return;
+                                return false;
                                 }
                                 
                                 
@@ -231,7 +229,7 @@ function Auto_BM_GMB() {
                                     processarSentimento(nota); //chama a função que preenche o sentimento do ticket
                                     } else {
                                     console.error("Primeira nota não encontrada.");
-                                    return;
+                                    return false;
                                     }
                                     
                                     function processarSentimento(nota) {  //função responsável pelo preenchimento do ticket
@@ -268,7 +266,7 @@ function Auto_BM_GMB() {
                                             console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
                                         } else {
                                             console.error("Botão de sentimento não encontrado");
-                                            return;
+                                            return false;
                                         }
                                     }
                                         }
@@ -285,7 +283,7 @@ function Auto_BM_GMB() {
                                             console.log("Opção 'Resolvido' selecionada.");
                                             } else {
                                             console.error("Não foi possível resolver o ticket");
-                                            return;
+                                            return false;
                                             }
                                         
                                     
@@ -296,7 +294,7 @@ function Auto_BM_GMB() {
                                                 console.log("Voltando para a posição inicial.");
                                                 } else {
                                                 console.error("Botão de voltar não encontrado.");
-                                                return;
+                                                return false;
                                                 }
                                                 
                                             }, 5000);           
@@ -338,13 +336,14 @@ function Auto_BM_GMB() {
     
     if (alerta) {  //não executamos a parte 2. Ou seja, não abrimos para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
     console.log("Ticket já foi aberto anteriormente");
-    alerta_ok.click();    
-        } else {
-    
-            automatizarInteracoes(); //executa a parte 2
-    
+    alerta_ok.click(); 
+
+    } else if (!AbrirTicket) {
+                return false;    //retorna falso a função Auto_BM_GMB
+        
+    } else {    
+            automatizarInteracoes(); //executa a parte 2    
         }
-    
     }, 30000); // Aguarda 30 segundos para verificar o alerta de responsável anterior do ticket
     
     } //fim da função auto_gmb
