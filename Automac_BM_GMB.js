@@ -28,7 +28,6 @@ function Auto_BM_GMB() {
                 return;
             }
     
-            setTimeout(() => {
                 function preencherMarca(marca) { // Essa função preenche a marca do ticket
                     const selectElement = document.getElementById("ticket-brand"); //Procura o campo select da marca
                     if (selectElement) { 
@@ -82,7 +81,6 @@ function Auto_BM_GMB() {
     
                     }, 3000); // Espera 3 segundos antes de selecionar o responsável
                 }, 2000); // Espera 2 segundos antes de preencher a marca
-            }, 3000); // Espera 3 segundos antes de selecionar o projeto
         }, 4000); // Espera 4 segundos antes de clicar em "Abrir Ticket"
     }, 2000); // Espera 2 segundos antes de armazenar a marca e a nota
     }
