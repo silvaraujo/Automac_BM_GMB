@@ -327,50 +327,53 @@ function Auto_BM_GMB() {
         console.log("comentário contém texto:", comentario);
         }
 
-    }, 7000);   // Espera 7 segundos
-
-    setTimeout(() => { 
-    //localiza a aba de alerta e seu botão
-    var alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
-    var alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
     
-    if (alerta) {  //não executamos a parte 2. Ou seja, não abrimos para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
-    console.log("Ticket já foi aberto anteriormente");
-    alerta_ok.click(); 
-
-    } else if (!AbrirTicket) {
-                return false;    //retorna falso a função Auto_BM_GMB
+        setTimeout(() => { 
+            //localiza a aba de alerta e seu botão
+            var alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
+            var alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
+            
+            if (alerta) {  //não executamos a parte 2. Ou seja, não abrimos para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
+            console.log("Ticket já foi aberto anteriormente");
+            alerta_ok.click(); 
         
-    } else {    
-            automatizarInteracoes(); //executa a parte 2    
-        }
-    }, 30000); // Aguarda 30 segundos para verificar o alerta de responsável anterior do ticket
+            } else if (!AbrirTicket) {
+                        return false;    //retorna falso a função Auto_BM_GMB
+                
+            } else {    
+                    automatizarInteracoes(); //executa a parte 2    
+                }
+                  
+                setTimeout(() => {
+                    // Gerar um número aleatório entre 0 e 1
+                    var numeroAleatorio = Math.random();
+                
+                    // Arredondar o número para 0 ou 1
+                    var resultado = Math.round(numeroAleatorio);
+                
+                    // Selecionar os botões de rolagem usando XPath
+                    var botao_dir = document.evaluate('//*[@id="data-pagination"]/a[2]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                    var botao_esq = document.evaluate('//*[@id="data-pagination"]/a[1]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                
+                    if (!botao_dir || !botao_esq) {
+                        console.error("Um ou ambos os botões de rolagem não foram encontrados");
+                        return false;
+                    }
+                
+                    if (resultado === 0) {
+                        console.log("clicando na lista da direita");
+                        botao_dir.click();
+                    } else {
+                        console.log("clicando na lista da esquerda");
+                        botao_esq.click();
+                    }
+                
+                }, 50000); // Aguarda 50 segundos para passar para outra página
 
-    setTimeout(() => { //parte de rolagem dos comentários
-        // Gerar um número aleatório entre 0 e 1
-        var numeroAleatorio = Math.random();
-
-        // Arredondar o número para 0 ou 1
-        var resultado = Math.round(numeroAleatorio);
-
-        //botões de rolagem
-        var botao_dir = document.querySelector("#data-pagination > a.bt.right.enabled.tooltipstered");
-        var botao_esq = document.querySelector("#data-pagination > a.bt.left.enabled.tooltipstered");
-
-        if (!botao_dir || !botao_esq) {
-            console.error("Um ou ambos os botões de rolagem não foram encontrados");
-            return false;
-        }
-
-        if (resultado === 0) {
-            console.log("clicando na lista da direita")
-            botao_dir.click();
-        } else {
-            console.log("clicando na lista da esquerda")
-            botao_esq.click();
-        }
-     }, 80000); // Aguarda 80 segundos para passar para outra página
+            }, 23000); // Aguarda 23 segundos para verificar o alerta de responsável anterior do ticket
     
+    }, 7000);   // Espera 7 segundos
+ 
     } //fim da função auto_gmb
     
     Auto_BM_GMB()
