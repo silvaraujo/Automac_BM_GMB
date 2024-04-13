@@ -345,6 +345,31 @@ function Auto_BM_GMB() {
             automatizarInteracoes(); //executa a parte 2    
         }
     }, 30000); // Aguarda 30 segundos para verificar o alerta de responsável anterior do ticket
+
+    setTimeout(() => { //parte de rolagem dos comentários
+        // Gerar um número aleatório entre 0 e 1
+        var numeroAleatorio = Math.random();
+
+        // Arredondar o número para 0 ou 1
+        var resultado = Math.round(numeroAleatorio);
+
+        //botões de rolagem
+        var botao_dir = document.querySelector("#data-pagination > a.bt.right.enabled.tooltipstered");
+        var botao_esq = document.querySelector("#data-pagination > a.bt.left.enabled.tooltipstered");
+
+        if (!botao_dir || !botao_esq) {
+            console.error("Um ou ambos os botões de rolagem não foram encontrados");
+            return false;
+        }
+
+        if (resultado === 0) {
+            console.log("clicando na lista da direita")
+            botao_dir.click();
+        } else {
+            console.log("clicando na lista da esquerda")
+            botao_esq.click();
+        }
+     }, 80000); // Aguarda 80 segundos para passar para outra página
     
     } //fim da função auto_gmb
     
