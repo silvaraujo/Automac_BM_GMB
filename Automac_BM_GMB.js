@@ -1,5 +1,4 @@
 function Auto_BM_GMB() { 
-
     //parte 01 
     function AbrirTicket() {    // Essa função é responsável pela abertura do ticket    
         setTimeout(() => {
@@ -15,8 +14,7 @@ function Auto_BM_GMB() {
         } else {
             console.error("Marca não encontrada"); // Iniciais da marca não encontradas
             return;
-        }
-            
+        }          
         setTimeout(() => {
             // Procura o botão para abrir o ticket
             const newTicketButton = document.querySelector('a.new-ticket[data-ng-if="displayNewTicketButton(post)"]');
@@ -38,7 +36,6 @@ function Auto_BM_GMB() {
                         return;
                     }
                 }
-    
                 setTimeout(() => { // Preenche a marca do ticket com base nas iniciais da marca
                     if (brandValue === 'C') {
                         preencherMarca("616038478607cd31975c4006_casas_bahia"); // Preenche a marca como Casas Bahia
@@ -46,8 +43,7 @@ function Auto_BM_GMB() {
                     } else {
                         preencherMarca("616038478607cd31975c4006_ponto"); // Preenche a marca como Ponto
                         console.log("Marca preenchida como PIN");
-                    }
-    
+                    } 
                     setTimeout(() => {
                         function preencherResponsavel(nomeResponsavel) { // Função para preencher o responsável do ticket
                             const selectElement = document.querySelector("select.responsible-select"); // Encontra o select do responsável do ticket
@@ -59,7 +55,6 @@ function Auto_BM_GMB() {
                                 return;
                             }
                         }
-    
                         // Preenche o responsável do ticket como "Caio Araújo"
                         preencherResponsavel("Caio Araújo"); // Preenche o responsável como "Caio Araújo"
                         console.log("Responsável preenchido - Caio");
@@ -85,8 +80,7 @@ function Auto_BM_GMB() {
     }, 2000); // Espera 2 segundos antes de armazenar a marca e a nota
     }
     
-    //parte 2 
-    
+    //parte 2     
     function esperarEExecutar(tempo, acao) { // Função para esperar o tempo determinado e realizar uma ação
     setTimeout(acao, tempo);
     }
