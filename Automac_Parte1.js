@@ -26,7 +26,6 @@ function AbrirTicket() {
             }
 
             // Função para preencher a marca do ticket
-            setTimeout(() => {
                 function preencherMarca(marca) {
                     const selectElement = document.getElementById("ticket-brand"); // Encontra o elemento select para a marca
                     if (selectElement) {
@@ -79,7 +78,6 @@ function AbrirTicket() {
 
                     }, 5000); // Espera 2 segundos antes de selecionar o responsável
                 }, 5000); // Espera 2 segundos antes de preencher
-            }, 5000); // Espera 2 segundos antes de selecionar a marca
         }, 5000); // Espera 2 segundos antes de clicar em "Abrir Ticket"
     }, 5000); // Espera 1 segundo antes de armazenar a marca e a nota
 }
