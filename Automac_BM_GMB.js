@@ -13,7 +13,7 @@ function Auto_BM_GMB() {
             }
         } else {
             console.error("Marca não encontrada"); // Iniciais da marca não encontradas
-            return false;
+            
         }          
         setTimeout(() => {
             // Procura o botão para abrir o ticket
@@ -23,7 +23,7 @@ function Auto_BM_GMB() {
                 console.log("Ticket aberto");
             } else {
                 console.error("Botão para abrir novo ticket não encontrado com o seletor.");
-                return false;
+                
             }
     
                 function preencherMarca(marca) { // Essa função preenche a marca do ticket
@@ -33,7 +33,7 @@ function Auto_BM_GMB() {
                         selectElement.dispatchEvent(new Event('change')); // Simula um evento de mudança no campo
                     } else {
                         console.error("Elemento da marca não encontrado com o ID.");
-                        return false;
+                        
                     }
                 }
                 setTimeout(() => { // Preenche a marca do ticket com base nas iniciais da marca
@@ -52,7 +52,7 @@ function Auto_BM_GMB() {
                                 selectElement.dispatchEvent(new Event('change')); // Aciona um evento de mudança
                             } else {
                                 console.error("Elemento do responsável não encontrado.");
-                                return false;
+                                
                             }
                         }
                         // Preenche o responsável do ticket como "Caio Araújo"
@@ -62,7 +62,7 @@ function Auto_BM_GMB() {
                         // Envia o formulário do ticket
                         setTimeout(() => {
                             // Encontra o primeiro elemento usando XPath para enviar o formulário
-                            var element1 = document.evaluate('//*[@id="ticketForm"]/div[2]/input', document, null,
+                            let element1 = document.evaluate('//*[@id="ticketForm"]/div[2]/input', document, null,
                                 XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
                             // Verifica se esse elemento foi encontrado
                             if (element1) {
@@ -70,7 +70,7 @@ function Auto_BM_GMB() {
                                 console.log("Json enviado!"); // Confirmação de que o JSON foi enviado
                             } else {
                                 console.error("Elemento não encontrado pelo XPath fornecido.");
-                                return false;
+                                
                             }
                         }, 5000); // Espera 5 segundos antes de enviar o formulário
     
@@ -83,55 +83,55 @@ function Auto_BM_GMB() {
     //parte 2     
     function automatizarInteracoes() { // Função principal que contém todas as ações a serem executadas na parte 2
         setTimeout(() => {// Entramos no ticket aberto
-        var ticketopen = document.querySelector('a.open-ticket.ng-scope');
+        const ticketopen = document.querySelector('a.open-ticket.ng-scope');
         if (ticketopen) {
             ticketopen.click();
             console.log("Ticket aberto para preencher.");
         } else {
             console.error("Ticket não encontrado.");
-            return false;
+            
         }
     
     
             setTimeout(() => { // Procura a lista de tags
-                var list_button = document.querySelector("#tags-list-container");
+                const list_button = document.querySelector("#tags-list-container");
                 if (list_button) {
                     list_button.click();
                 } else {
                     console.error("Botão de tags não encontrado.");
-                    return false;
+                    
                 }
             
     
                 setTimeout(() => { // Apaga o texto anterior para evitar bugs
-                    var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
-                    var valorAtual = input.value;
+                    const input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+                    let valorAtual = input.value;
                     input.value = valorAtual.slice(0, -6); //apaga 6 caracteres
-                    var event = new Event('input', { bubbles: true });
+                    let event = new Event('input', { bubbles: true });
                     input.dispatchEvent(event);
                 
     
                     setTimeout(() => { // Nessa parte preenchemos a nota dentro da lista de tags
                         //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código   
-                        var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+                        const Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
                         if (Primeiranota) {
-                            var Notaticket = Primeiranota.textContent; // Retira o número inteiro
+                            let Notaticket = Primeiranota.textContent; // Retira o número inteiro
                             var NotaDoTicket = "Nota " + Notaticket; // Transforma no exato texto do input necessário
                         } else {
                             console.error("Nota do primeiro comentário não encontrada.");
-                            return false;
+                            
                         }
         
                         // Localizador da label que preenche as notas
                         var labels = document.querySelectorAll("label[data-ng-class='tag.selection'].ng-binding.blank");
                         if (!labels) { 
                             console.error("Labels que contém a nota não encontrada.");
-                            return false;
+                            
                         } else {
                         labels.forEach(function(label) { // Varre todos os seletores, visto que não há um único localizador para as tags
-                            var content = label.textContent.trim(); // Retira o conteúdo de texto da tag
+                            const content = label.textContent.trim(); // Retira o conteúdo de texto da tag
                             if (content === NotaDoTicket) { // Verifica se esse conteúdo é igual a nota do ticket trabalhado
-                                var input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
+                                const input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
                                 input.value = NotaDoTicket; // Preenche as notas tanto no box quanto na barra de pesquisa de tags devido a limitação do código fonte
                                 console.log("Preenchendo com a", NotaDoTicket);
                                 label.click(); // Seleciona a opção
@@ -165,7 +165,7 @@ function Auto_BM_GMB() {
                                 }, 5000);
                             } else {
                                 console.error('Último elemento não encontrado');
-                                return false;
+                                
                             }
                         
                             setTimeout(() => {        //clica no botão de aplicar tags
@@ -175,66 +175,66 @@ function Auto_BM_GMB() {
                                 console.log("Tags aplicadas")
                             } else {
                                 console.error("Elemento não encontrado.");
-                                return false;
+                                
                             }
                              
                                 setTimeout(() => {    // Nessa parte, aplicamos o sentimento na avaliação
                                 //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código           
-                                var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+                                const Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
                                 if (Primeiranota) {
-                                var nota = parseInt(Primeiranota.textContent.trim()); // Obtém o valor da nota convertendo para um número
+                                let nota = parseInt(Primeiranota.textContent.trim()); // Obtém o valor da nota convertendo para um número
                                 
                                 if (nota >= 4) { // Caso positivo - nota igual ou maior que 4
-                                    var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.positive.on");
+                                    const sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.positive.on");
                                     if (sentimentos.length > 0) {     
                                         sentimentos[sentimentos.length - 1].click();     // Acessa o último elemento do array usando o índice -1 e executa um clique nele
                                         console.log("Sentimento da avaliação preenchido - positivo.");
                                     } else {
                                         console.error("Nenhum elemento positivo encontrado.");
-                                        return false;
+                                        
                                     }
                                 }
                                 else if (nota === 3) {    // Caso neutro - nota igual a 3
-                                    var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.neutral");
+                                    const sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.neutral");
                                     if (sentimentos.length > 0) {
                                         sentimentos[sentimentos.length - 1].click();    // Acessa o último elemento do array usando o índice -1 e executa um clique nele
                                         console.log("Sentimento da avaliação preenchido - neutro.");
                                     } else {
                                         console.error("Nenhum elemento neutro encontrado.");
-                                        return false;
+                                        
                                     }
                                 }
                                 
                                 else {    // Caso negativo - nota menor ou igual a 2
-                                    var sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.negative");
+                                    const sentimentos = document.querySelectorAll("div.bts-actions > div.sentiments.ng-scope > a.negative");
                                     if (sentimentos.length > 0) {
                                         sentimentos[sentimentos.length - 1].click(); // Acessa o último elemento do array usando o índice -1 e simula um clique nele
                                         console.log("Sentimento da avaliação preenchido - negativo.");
                                     } else {
                                         console.error("Nenhum elemento negativo encontrado.");
-                                        return false;
+                                        
                                     }
                                 }
                                 } else {
                                 console.error("Nota do primeiro comentário não encontrada.");
-                                return false;
+                                
                                 }
                                 
                                 
                                     setTimeout(() => { //nessa parte aplicamos o sentimento ao ticket
                                     //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código    
-                                    var Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
+                                    const Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
                                     if (Primeiranota) {
-                                    var nota = parseInt(Primeiranota.textContent.trim());
+                                    let nota = parseInt(Primeiranota.textContent.trim());
                                     processarSentimento(nota); //chama a função que preenche o sentimento do ticket
                                     } else {
                                     console.error("Primeira nota não encontrada.");
-                                    return false;
+                                    
                                     }
                                     
                                     function processarSentimento(nota) {  //função responsável pelo preenchimento do ticket
-                                    var sentimentoElemento;
-                                    var xpathElemento;
+                                    let sentimentoElemento;
+                                    let xpathElemento;
                                     
                                     switch (nota) {  //esse algoritmo tenta encontrar a o seletor que preenche o sentimento do ticket. O endereço desse seletor muda de caso em caso.
                                         case 4:       //pode não ser necessário o uso do query selector mas mantive no código por opção
@@ -258,43 +258,43 @@ function Auto_BM_GMB() {
                                         sentimentoElemento.click();
                                         console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
                                     } else {
-                                        var xpathResult = document.evaluate(xpathElemento, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-                                        var elementoXPath = xpathResult.singleNodeValue;
+                                        let xpathResult = document.evaluate(xpathElemento, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+                                        let elementoXPath = xpathResult.singleNodeValue;
                                         
                                         if (elementoXPath) { //clica na nota atribuida caso tenha sido achada pelo xpath
                                             elementoXPath.click();
                                             console.log("Sentimento do ticket preenchido - " + (nota >= 4 ? "positivo" : nota === 3 ? "neutro" : "negativo"));
                                         } else {
                                             console.error("Botão de sentimento não encontrado");
-                                            return false;
+                                            
                                         }
                                     }
                                         }
                                     
                                     
                                         setTimeout(() => { // Resolve o ticket
-                                            var selectElement = document.getElementById("ticket-status");    // Seleciona o elemento <select> pelo ID
+                                            let selectElement = document.getElementById("ticket-status");    // Seleciona o elemento <select> pelo ID
                                             if (selectElement) {    
                                             selectElement.selectedIndex = 3;    // Define como índice 3 
                                             
-                                            var changeEvent = new Event("change", { bubbles: true });    // Dispara o evento de mudança
+                                            let changeEvent = new Event("change", { bubbles: true });    // Dispara o evento de mudança
                                             selectElement.dispatchEvent(changeEvent);
                                             
                                             console.log("Opção 'Resolvido' selecionada.");
                                             } else {
                                             console.error("Não foi possível resolver o ticket");
-                                            return false;
+                                            
                                             }
                                         
                                     
                                             setTimeout(() => {  //volta a posição inicial
-                                                var apertavoltar = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > a");
+                                                const apertavoltar = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > a");
                                                 if (apertavoltar) {
                                                 apertavoltar.click();
                                                 console.log("Voltando para a posição inicial.");
                                                 } else {
                                                 console.error("Botão de voltar não encontrado.");
-                                                return false;
+                                                
                                                 }
                                                 
                                             }, 5000);           
@@ -330,8 +330,8 @@ function Auto_BM_GMB() {
     
         setTimeout(() => { 
             //localiza a aba de alerta e seu botão
-            var alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
-            var alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
+            const alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
+            const alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
             
             if (alerta) {  //não executamos a parte 2. Ou seja, não abrimos para preencher o ticket. Caso seja uma nova avaliação do cliente, o ticket ficará como "novo"
             console.log("Ticket já foi aberto anteriormente");
@@ -346,18 +346,18 @@ function Auto_BM_GMB() {
                   
                 setTimeout(() => {
                     // Gerar um número aleatório entre 0 e 1
-                    var numeroAleatorio = Math.random();
+                    let numeroAleatorio = Math.random();
                 
                     // Arredondar o número para 0 ou 1
-                    var resultado = Math.round(numeroAleatorio);
+                    let resultado = Math.round(numeroAleatorio);
                 
                     // Selecionar os botões de rolagem usando XPath
-                    var botao_dir = document.evaluate('//*[@id="data-pagination"]/a[2]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-                    var botao_esq = document.evaluate('//*[@id="data-pagination"]/a[1]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                    const botao_dir = document.evaluate('//*[@id="data-pagination"]/a[2]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                    const botao_esq = document.evaluate('//*[@id="data-pagination"]/a[1]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
                 
                     if (!botao_dir || !botao_esq) {
                         console.error("Um ou ambos os botões de rolagem não foram encontrados");
-                        return false;
+                        
                     }
                 
                     if (resultado === 0) {
@@ -368,7 +368,7 @@ function Auto_BM_GMB() {
                         botao_esq.click();
                     }
                 
-                }, 50000); // Aguarda 50 segundos para passar para outra página
+                }, 45000); // Aguarda 45 segundos para passar para outra página
 
             }, 23000); // Aguarda 23 segundos para verificar o alerta de responsável anterior do ticket
     
@@ -376,4 +376,4 @@ function Auto_BM_GMB() {
  
     } //fim da função auto_gmb
     
-    Auto_BM_GMB()
+    Auto_BM_GMB() //chama a função
