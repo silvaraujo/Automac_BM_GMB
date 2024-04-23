@@ -13,5 +13,5 @@ Link do relatório: https://app.buzzmonitor.com.br/reports/65a57e838607cd490c6d7
 ### Parte 2 - Automação no preenchimento do ticket
 >Essa parte lida com os mecânismos e critérios de preenchimento do ticket no relatório. Além disso, ela retorna a lista inicial de comentários.
 
-### Parte 3 - Execução do código e looping (EM ANDAMENTO)
->Essa parte foca na repetição continua do script. Ela roda até acontecer qualquer tipo de erro.
+### Parte 3 - Execução do código
+>Essa parte foca nos critérios de execução das funções
