@@ -1,4 +1,5 @@
-function Auto_BM_GMB() { 
+function Auto_BM_GMB() { //função principal
+    
     //parte 01 
     function AbrirTicket() {    // Essa função é responsável pela abertura do ticket    
         setTimeout(() => {
@@ -92,7 +93,6 @@ function Auto_BM_GMB() {
             
         }
     
-    
             setTimeout(() => { // Procura a lista de tags
                 const list_button = document.querySelector("#tags-list-container");
                 if (list_button) {
@@ -101,8 +101,7 @@ function Auto_BM_GMB() {
                     console.error("Botão de tags não encontrado.");
                     
                 }
-            
-    
+                
                 setTimeout(() => { // Apaga o texto anterior para evitar bugs
                     const input = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > div.input-container.relative > div.ticket-tags.actions-item.ng-scope > ul > input");
                     let valorAtual = input.value;
@@ -110,7 +109,6 @@ function Auto_BM_GMB() {
                     let event = new Event('input', { bubbles: true });
                     input.dispatchEvent(event);
                 
-    
                     setTimeout(() => { // Nessa parte preenchemos a nota dentro da lista de tags
                         //Observamos, novamente a nota do primeiro comentário. !!Seria bom aplicar uma variável com maior escopo já que usamos 3x no código   
                         const Primeiranota = document.querySelector('span.review-rating.ng-binding.ng-scope');
@@ -138,7 +136,6 @@ function Auto_BM_GMB() {
                             }
                         });
                         }
-    
     
                         setTimeout(() => { // Seleciona a tag avaliação sem comentário
                             const itens = document.querySelectorAll(".item-list-container"); //localiza todos os itens da lista de tags
@@ -286,7 +283,6 @@ function Auto_BM_GMB() {
                                             
                                             }
                                         
-                                    
                                             setTimeout(() => {  //volta a posição inicial
                                                 const apertavoltar = document.querySelector("#modal-show-ticket > div.ticket-container > div > div.ticket-options > a");
                                                 if (apertavoltar) {
@@ -311,7 +307,6 @@ function Auto_BM_GMB() {
 }    //fim da função da parte 2
     
     setTimeout(() => {     // Adiciona tempo antes de executar o código
-
         //coletor generalizado dos comentários com ou sem texto
         //p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if="::post.hasNoMedia && !post.isLinkedInPostShare"][id^="content-bm-posts-saas"]
         const comentario = document.querySelector("p.content.noiframe.ng-binding.ng-scope.ng-isolate-scope[data-ng-if=\"::post.hasNoMedia && !post.isLinkedInPostShare\"][id^=\"content-bm-posts-saas\"]").textContent;
@@ -327,8 +322,7 @@ function Auto_BM_GMB() {
         console.log("comentário contém texto:", comentario);
         }
 
-    
-        setTimeout(() => { 
+            setTimeout(() => { 
             //localiza a aba de alerta e seu botão
             const alerta = document.querySelector("body > div.sweet-alert.showSweetAlert.visible")
             const alerta_ok = document.querySelector("body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button")
